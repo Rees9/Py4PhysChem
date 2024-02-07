@@ -22,8 +22,8 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/Rees9/VIROSLAB  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
+  url: https://github.com/Rees9/Py4PhysChem  # Online location of your book
+  path_to_book: _build/html  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
@@ -44,4 +44,5 @@ sphinx:
 # activate Thebe integration?
 # See https://jupyterbook.org/interactive/execute.html#thebelab
 launch_buttons:
+  binderhub_url: "https://mybinder.org/v2/gh/Rees9/Py4PhysChem/master"  # The URL for your BinderHub (e.g., https://mybinder.org)
   thebe: true
