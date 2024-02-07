@@ -1,0 +1,866 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Manipulation &amp; Analysis in Python &#8212; Python for Experimental Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ManipulatingData';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Visualizing Data in Python" href="plotting.html" />
+    <link rel="prev" title="Importing Data into Python" href="ImportingData.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Python for Physical Chemistry
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ImportingData.html">Importing Data into Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Manipulation &amp; Analysis in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Visualizing Data in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lmfit.html">Best Fits in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_tutorial.html">(CHM223) Rotational-Vibrational Spectroscopy - Theory</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Rees9/VIROSLAB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Rees9/VIROSLAB/issues/new?title=Issue%20on%20page%20%2FManipulatingData.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ManipulatingData.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Manipulation & Analysis in Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truncating-data-with-boolean-logic">Truncating data with boolean logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-peaks-scipy-find-peaks">Finding peaks: scipy.find_peaks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-subtraction">Background subtraction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">Normalization.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flipping-data">Flipping data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-manipulation-analysis-in-python">
+<h1>Data Manipulation &amp; Analysis in Python<a class="headerlink" href="#data-manipulation-analysis-in-python" title="Permalink to this heading">#</a></h1>
+<p>Now that we have imported data, often we want to use it to determine certain experimental observables. A peak wavelength from a UV/VIS spectra, a lifetime from concentration data, or chemical shift peaks in NMR. There are a multitude of ways to use this data to perform operations, and here we will just present a few.</p>
+<p>Let’s start with some NMR data of Ag~2~ZnSnS~4~ (AZTS) nanocrystals (<a class="reference external" href="https://chemrxiv.org/engage/chemrxiv/article-details/63e465cb3067856f18bc31f3">Yarur, F. <em>et al.</em> (Wilson), <strong>2023.</strong> <em>ChemRxiv</em></a>) labelled <code class="docutils literal notranslate"><span class="pre">D1</span> <span class="pre">AZTS</span> <span class="pre">crude.csv</span></code>, using our template from the Importing Data section. Remember though, first we should always just <em>open up the data</em> to see what it looks like to figure out how to import it</p>
+<p><img alt="image.png" src="_images/nmr_data.png" /></p>
+<p>What we can notice is that, despite being a .csv file, the data is not comma delimited. In fact, there’s just a space between each number. Now we know what parameters to pass to import properly!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### IMPORT AND ROUGH PLOT DATA</span>
+<span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># define where our file can be found to be imported</span>
+<span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/D1 AZTS crude.csv&#39;</span>
+
+<span class="c1"># label each variable something relevant to what it represents</span>
+<span class="n">ppm</span><span class="p">,</span> <span class="n">signal</span>             <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span>           <span class="c1"># string, filepath to data</span>
+                                 <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>       <span class="c1"># data is float</span>
+                                 <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>      <span class="c1"># data is separated by spaces/tabs, so leave this blank</span>
+                                 <span class="n">skip_header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>     <span class="c1"># when we look, data has no header, so we set this to zero</span>
+                                 <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>       <span class="c1"># first column is ppm, second column is absorption</span>
+
+<span class="c1"># print and plot data to try and look if data imported properly</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ppm = &#39;</span><span class="p">,</span><span class="n">ppm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;signal = &#39;</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ppm</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span> <span class="c1"># plt.plot(xvalues, yvalues)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ppm =  [-2.0181  -2.01786 -2.01761 ... 14.0179  14.0181  14.0184 ]
+signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x18e8d8e3048&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="truncating-data-with-boolean-logic">
+<h2>Truncating data with boolean logic<a class="headerlink" href="#truncating-data-with-boolean-logic" title="Permalink to this heading">#</a></h2>
+<div class="important admonition">
+<p class="admonition-title">For CHM223 students</p>
+<p>This subsection is relevant for your assignment!</p>
+</div>
+<p>While we can modify the limits of our plots to highlight specific regions of interest, we also might frequently want to truncate our data itself. In particular, if we are trying to do any integration over our entire spectra, or normalize our data to a local extrema versus an absolute that isn’t physically relevant (due to error, laser, instrumentation, etc.).</p>
+<p>Luckily, python has easy ways for us to modify our data accordingly using <strong>boolean logic</strong> (For a refresher, check out computational assignment X.) Given an array, we can check each value within an array against a condition, such as smaller than a certain number. This will return an array of the same size with only boolean values of <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Lets use the NMR data above for example. Say we only care about data where ppm is less than 10. We can check which values corruspond to less than 10 ppm as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">print(ppm</span> <span class="pre">&lt;</span> <span class="pre">10)</span></code></p>
+<p>which returns</p>
+<p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">True</span>&#160; <span class="pre">True</span>&#160; <span class="pre">True</span> <span class="pre">True</span> <span class="pre">True</span> <span class="pre">...</span>&#160; <span class="pre">False</span> <span class="pre">False</span> <span class="pre">False</span> <span class="pre">False</span> <span class="pre">False]</span></code></p>
+<p>why this is useful, is we can use this array of boolean values to modify our original array, or the signal array which corrusponds to those x values (pmm values), where we only keep every value where the entry is true. See below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import data</span>
+<span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/D1 AZTS crude.csv&#39;</span>
+<span class="n">ppm</span><span class="p">,</span> <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">skip_header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># plot our data, unmodified</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ppm</span><span class="p">,</span><span class="n">signal</span><span class="p">,</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;original data&#39;</span><span class="p">,)</span>
+
+<span class="c1"># modify the ppm and signal arrays to only include values where the signal is less than 10</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="n">ppm</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">]</span>   <span class="c1"># first, modify the y values to corruspond to when the x values are less than 10</span>
+<span class="n">ppm</span> <span class="o">=</span> <span class="n">ppm</span><span class="p">[</span><span class="n">ppm</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">]</span>         <span class="c1"># then, modify the x values to corruspond to when the x values are less than 10</span>
+
+<span class="c1"># furthermore, we might also want to only include values where ppm is greater than 0</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="n">ppm</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>    <span class="c1"># first, modify the y values to corruspond to when the x values are greater than 0</span>
+<span class="n">ppm</span> <span class="o">=</span> <span class="n">ppm</span><span class="p">[</span><span class="n">ppm</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>          <span class="c1"># then, modify the x values to corruspond to when the x values are greater than 0</span>
+
+<span class="c1"># plot our truncated data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ppm</span><span class="p">,</span><span class="n">signal</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;truncated data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># We can also do the same operations above but with a single line of code for array of data</span>
+<span class="c1"># the &amp; symbol allows us to do multiple comparisons at once, as long as we put each comparison in parentheses ()</span>
+<span class="n">ppm</span><span class="p">,</span> <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">skip_header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[(</span><span class="n">ppm</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ppm</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span> <span class="c1"># first, modify the y values to corruspond to when the x values are less than 10 and greater than 0</span>
+<span class="n">ppm</span> <span class="o">=</span> <span class="n">ppm</span><span class="p">[(</span><span class="n">ppm</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ppm</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span> <span class="c1"># then, modify the x values to corruspond to when the x values are less than 10 and greater than 0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="finding-peaks-scipy-find-peaks">
+<h2>Finding peaks: scipy.find_peaks<a class="headerlink" href="#finding-peaks-scipy-find-peaks" title="Permalink to this heading">#</a></h2>
+<div class="important admonition">
+<p class="admonition-title">For CHM223 students</p>
+<p>This subsection is relevant for your assignment!</p>
+</div>
+<p>scipy, like numpy or matplotlib, is another package for python that includes a large number of functions useful for science and data analysis. One of the many included is the function <code class="docutils literal notranslate"><span class="pre">find_peaks()</span></code>, which allows us to locate peaks in an array of values in order to determine their positions, not unlike in FTIR software.</p>
+<p>The function is used as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">peaks</span> <span class="pre">,</span> <span class="pre">_</span> <span class="pre">=</span> <span class="pre">scipy.find_peaks(data,</span> <span class="pre">height</span> <span class="pre">=</span> <span class="pre">x,</span> <span class="pre">width</span> <span class="pre">=</span> <span class="pre">y,</span> <span class="pre">prominence</span> <span class="pre">=</span> <span class="pre">z)</span></code></p>
+<p>where the created array <code class="docutils literal notranslate"><span class="pre">peaks</span></code> will be an array of all the positions (i.e. indices) in the original array where the peaks are found. For example, a value of <code class="docutils literal notranslate"><span class="pre">34</span></code> in the <code class="docutils literal notranslate"><span class="pre">peaks</span></code> array would imply we have a peak located at <code class="docutils literal notranslate"><span class="pre">data[34]</span></code>. For those interested, the underscore in <code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">_</span></code> just represents that for all the other things the function returns, we don’t care about them and want to throw them away.</p>
+<p>There are a few important controls for this function:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">height</span> <span class="pre">=</span></code> will specify a threshold for the minimum height of a peak. If we know our background signal, this means we will never obtain any local minimum that may appear from a fluctuating background for example.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">=</span></code> will specify the expected width between neighbouring peaks. This is useful if we know that our data is well separated, as alongside height, we can specify that peaks we care about should be above a value of 1, while also being no less than 0.5 units apart from each other.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prominence</span> <span class="pre">=</span></code> is the most elusive of all but arguably the most useful. It helps create a threshold of peak values by defining <em>the minimum height necessary to descend to get from a peak to any other peak</em>. <strong>Often, the proper use of prominence will mean we don’t require any other controls, as highlighted in the example below</strong></p></li>
+</ul>
+<p>We can see an example of analyzing NMR data below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">find_peaks</span>
+
+<span class="c1"># define where our file can be found to be imported</span>
+<span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/D1 AZTS crude.csv&#39;</span> <span class="c1"># sourced from E:\Dropbox (WilsonLab)\WilsonLab Team Folder\Projects\2021-04 - AZTS (SilKets) NCs\NMR</span>
+
+<span class="c1"># import data, using our template from the previous section</span>
+<span class="n">ppm</span><span class="p">,</span> <span class="n">signal</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span>
+                                 <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                                 <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                 <span class="n">skip_header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                 <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># first, truncate our data to regions we care about</span>
+
+<span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[(</span><span class="n">ppm</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ppm</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span> <span class="c1"># first, modify the y values to corruspond to when the x values are less than 10 and greater than 0</span>
+<span class="n">ppm</span> <span class="o">=</span> <span class="n">ppm</span><span class="p">[(</span><span class="n">ppm</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ppm</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>       <span class="c1"># then, modify the x values to corruspond to when the x values are less than 10 and greater than 0</span>
+
+<span class="c1"># plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ppm</span><span class="p">,</span><span class="n">signal</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;truncated data&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># find peaks and plot them</span>
+<span class="n">peaks</span> <span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">prominence</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ppm</span><span class="p">[</span><span class="n">peaks</span><span class="p">],</span> <span class="n">signal</span><span class="p">[</span><span class="n">peaks</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;peaks&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># flip x-axis; how nmr people do it!</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># label x and y axis and add a title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$\delta$ ppm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;1H NMR of AZTS NCs crude&#39;</span><span class="p">)</span> <span class="c1"># change title to match sample name</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># show a legend with the labels we defined earlier</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;peaks located at &#39;</span><span class="p">,</span><span class="n">ppm</span><span class="p">[</span><span class="n">peaks</span><span class="p">])</span> <span class="c1"># print the ppm values of the peaks</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>peaks located at  [1.05098 1.06786 1.38916 2.10859 2.17466 3.46768 5.56162 6.95398 6.97258
+ 6.9973  7.01516 7.06386 7.08245]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="background-subtraction">
+<h2>Background subtraction<a class="headerlink" href="#background-subtraction" title="Permalink to this heading">#</a></h2>
+<p>A very common correction you will need to do to experimental data is background subtraction. Some softwares from instruments will do this automatically when you do a blank measurement, but others (and quite often, you would preferably) record a blank/background measurement, then record your samples.</p>
+<p>Sometimes this can be as simple as subtracting a constant amount from all your data. Turning to our previous fluorescence spectra example, we see a stable amount of signal that is above zero outside of the range of wavelengths where we would expect photoluminescence (mainly, &lt;300 nm and &gt;900 nm). We therefore may want to find out what this value is, and subtract that value from <em>every</em> value in our intensity array, as that would could as our background signal. we can do that using the following array manipulation</p>
+<p><code class="docutils literal notranslate"><span class="pre">intens</span> <span class="pre">=</span> <span class="pre">intens</span> <span class="pre">-</span> <span class="pre">315</span></code></p>
+<p>All this does is take every element of the <code class="docutils literal notranslate"><span class="pre">array</span></code> we defined as <code class="docutils literal notranslate"><span class="pre">intensity</span></code>, and subtract the value of <code class="docutils literal notranslate"><span class="pre">315</span></code> from it. As an example, lets do this with the data we imported in the <strong>Importing Data</strong> module</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># define where our file can be found to be imported</span>
+<span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/CdSe_EmissionSpectra.txt&#39;</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span>
+                                 <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                                 <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                 <span class="n">skip_header</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+                                 <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># plot to try and look if data imported properly</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span> <span class="c1"># plt.plot(xvalues, yvalues)</span>
+<span class="n">bg</span> <span class="o">=</span> <span class="mi">315</span> <span class="o">+</span> <span class="mi">1250</span>        <span class="c1"># define background signal intensity</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">bg</span>     <span class="c1"># subtract background</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;adjusted&#39;</span><span class="p">)</span>
+<span class="c1">#plt.xlim(400,900)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (a.u.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectrum of CdSe Quantum Dots after Background Subtraction&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x18e9e525d48&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="normalization">
+<h2>Normalization.<a class="headerlink" href="#normalization" title="Permalink to this heading">#</a></h2>
+<p>Another common practice is normalization, especially when there are certain features you want to highlight, or if you want to have a better comparison between distinct measurements.</p>
+<p><code class="docutils literal notranslate"><span class="pre">intens</span> <span class="pre">=</span> <span class="pre">intens/max(intens)</span></code></p>
+<p>However, often we will only be interested in determining a local maximum to normalize too. Here, we can utilize truncation to say we only want a maximum between a certain range. See below for an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># define where our file can be found to be imported</span>
+<span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/CdSe_EmissionSpectra.txt&#39;</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span>
+                                 <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                                 <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                 <span class="n">skip_header</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+                                 <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># TBD Move local maximum w truncation to after we introduce it near the nmr section</span>
+<span class="c1"># locate local maximum between 400 and 500</span>
+<span class="c1">#local_y = y[(x &gt; 400) &amp; (x &lt; 500)] # truncate y values to x values between 400 and 500</span>
+<span class="c1">#local_max = max(local_y) # find local max between 400 and 500</span>
+
+<span class="c1"># print local maximum and its location</span>
+<span class="c1">#print(&#39;local max is equal to&#39;, local_max,&#39;and located at x = &#39;, x[y == local_max])</span>
+
+<span class="n">local_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># find global maximum</span>
+
+<span class="c1"># normalize by local maximum</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="n">local_max</span>
+
+<span class="c1"># plot normalized data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;normalized&#39;</span><span class="p">)</span>
+
+<span class="c1"># we can also subtract the background, however we usually do that before normalizing and wont do it here</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span><span class="mi">900</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (norm.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectrum of CdSe Quantum Dots after Normalization&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x18e9e4d1108&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is especially useful when comparing distinct spectra, such as in the case where we need to import multiple files.</p>
+</section>
+<section id="flipping-data">
+<h2>Flipping data<a class="headerlink" href="#flipping-data" title="Permalink to this heading">#</a></h2>
+<p>Sometimes, the order in which instruments record data is not necessarily how we want to plot it or analyze it. For example, let’s say we want to plot the emission by energy rather than wavelength. For reference, we can convert from wavelength of emission to energy in electronvolts by the following:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{\lambda} = \frac{1239.8}{\lambda}  \text{ eV}
+\]</div>
+<p>So we can easily plot emission intensity versus energy as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># define where our file can be found to be imported</span>
+<span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/CdSe_EmissionSpectra.txt&#39;</span>
+
+<span class="n">wave</span><span class="p">,</span> <span class="n">intensity</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span>
+                                 <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                                 <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                 <span class="n">skip_header</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+                                 <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># calculate a new energy array from wavelength array</span>
+<span class="n">ev</span> <span class="o">=</span> <span class="mf">1239.8</span><span class="o">/</span><span class="n">wave</span>
+
+<span class="c1"># plot normalized data by ev instead of wavelength</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ev</span><span class="p">,</span><span class="n">intensity</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="c1"># we can also subtract the background, however we usually do that before normalizing and wont do it here</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Energy (eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (a.u.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectrum of CdSe Quantum Dots, energy x-axis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Emission Spectrum of CdSe Quantum Dots, energy x-axis&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Generally we plot energy from highest to lowest, however by default <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> plots from lowest to highest values. This is common for many other plots, such as NMR plots which we will see later below. We can easily fix this by reversing the order of our axis limits to <code class="docutils literal notranslate"><span class="pre">plt.xlim(max,min)</span></code> rather than the typical min, max order. We can easily obtain the minimum and maximum values for our x-axis by calling <code class="docutils literal notranslate"><span class="pre">max(x)</span></code> and <code class="docutils literal notranslate"><span class="pre">min(x)</span></code> respectively, where <code class="docutils literal notranslate"><span class="pre">x</span></code> is whatever label we use for our x-data. See below for example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ev</span><span class="p">,</span><span class="n">intensity</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="c1"># reverse x-axis, to go in descending order. Often used when plotting quantities related to energy.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">ev</span><span class="p">),</span><span class="nb">min</span><span class="p">(</span><span class="n">ev</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Energy (eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (a.u.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectrum of CdSe Quantum Dots, reversed energy x-axis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Emission Spectrum of CdSe Quantum Dots, reversed energy x-axis&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Additionally, We also may want to do this with our data arrays themselves. To do this, we can simply use <code class="docutils literal notranslate"><span class="pre">np.flip</span></code> as below on our NMR data for example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original array:&#39;</span><span class="p">,</span><span class="n">ev</span><span class="p">)</span>
+<span class="n">ev_flipped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">ev</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;flipped array:&#39;</span><span class="p">,</span><span class="n">ev_flipped</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original array: [3.65988298 3.65573896 3.65161507 ... 1.21765332 1.21732215 1.21699115]
+flipped array: [1.21699115 1.21732215 1.21765332 ... 3.65161507 3.65573896 3.65988298]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is useful in case we want to work with our data in a specific order of values! But usually, just reversing the plot will be enough.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Rees9/VIROSLAB",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ImportingData.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Importing Data into Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="plotting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualizing Data in Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truncating-data-with-boolean-logic">Truncating data with boolean logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-peaks-scipy-find-peaks">Finding peaks: scipy.find_peaks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-subtraction">Background subtraction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">Normalization.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flipping-data">Flipping data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rees Hughes, Mark Wilson
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

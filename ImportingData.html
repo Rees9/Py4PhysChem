@@ -1,0 +1,844 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Importing Data into Python &#8212; Python for Experimental Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ImportingData';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Manipulation &amp; Analysis in Python" href="ManipulatingData.html" />
+    <link rel="prev" title="Python for Physical Chemistry" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Python for Physical Chemistry
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Importing Data into Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ManipulatingData.html">Data Manipulation &amp; Analysis in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Visualizing Data in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lmfit.html">Best Fits in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_tutorial.html">(CHM223) Rotational-Vibrational Spectroscopy - Theory</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Rees9/VIROSLAB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Rees9/VIROSLAB/issues/new?title=Issue%20on%20page%20%2FImportingData.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ImportingData.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Importing Data into Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-data-files">Sample Data files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-importing-data-files-numpy-genfromtxt">Reading and Importing data files: numpy.genfromtxt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-multiple-data-files-at-once">Importing multiple data files at once</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excluding-files-checking-the-filenames">Excluding files: checking the filenames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-filenames-string-split">Parsing filenames: string.split()</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="importing-data-into-python">
+<h1>Importing Data into Python<a class="headerlink" href="#importing-data-into-python" title="Permalink to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For students of CHM223, you should be familiar with simple Python syntax related to importing packages and defining variables after assignment 1. From assignment 2, you should be familiar with simple plotting using matplotlib. We will assume some of this basic knowledge in this section, however plotting in particular will be covered in more detail in another section</p>
+</div>
+<p>Here, we will learn how to actually import data into Python to be manipulated. This is typically done through packages, the main two that are used are <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. Pandas is typically used for massive datasets and has a lot of built-in function for data processing and analysis. By contrast, numpy is a bit more barebones but (usefully) relatively straightforward to use.</p>
+<p>Importing experimental data is simple in theory, but usually requires some care in practice. Ideally, all experimental data would look like the following:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time (s)</p></th>
+<th class="head"><p>Conc (mM)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0.72</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0.51</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>0.37</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>0.26</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>0.19</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>0.14</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>0.07</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>0.05</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>0.04</p></td>
+</tr>
+</tbody>
+</table>
+<p>However in reality, it looks more like this:</p>
+<div>
+<img src="images/scary_tres_data.png" alt="" width="600"/>
+</div>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/scary_tres_data.png"><img alt="_images/scary_tres_data.png" src="_images/scary_tres_data.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text"><a class="reference external" href="https://doi.org/10.26434/chemrxiv-2023-5k2q9">Imperiale, C. <em>et al.</em> (Wilson) <strong>2023</strong>. <em>ChemRxiv</em></a></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>(For those interested, yes, this is actual data. It is a Time-Resolved Emission Spectrum of lead sulphide quantum dots, which tracks the intensity of photoluminescence at each wavelength over time following pulsed excitation from a laser. Check out the citation source if you’re interested!)</p>
+<p>Now turning this data into something useful is the first, important step before we can do most meaningful analyses. With Python alone, there are countless ways to do this. For our purposes, we are going to learn how to use the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package to import data.</p>
+<section id="sample-data-files">
+<h2>Sample Data files<a class="headerlink" href="#sample-data-files" title="Permalink to this heading">#</a></h2>
+<p>We will be using real experimental data files throughout the textbook. These are all locally hosted on this textbook, and can also be downloaded directly from the <span class="xref myst">github repo</span>. When relevant, we will also provide literature sources where you can learn more about the underlying research in which these data have been used!</p>
+</section>
+<section id="reading-and-importing-data-files-numpy-genfromtxt">
+<h2>Reading and Importing data files: numpy.genfromtxt<a class="headerlink" href="#reading-and-importing-data-files-numpy-genfromtxt" title="Permalink to this heading">#</a></h2>
+<div class="important admonition">
+<p class="admonition-title">For CHM223 students</p>
+<p>This subsection is relevant for your assignment!</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> is useful for importing data of different filetypes, especially *.csv (plain text, <a class="reference external" href="https://en.wikipedia.org/wiki/Comma-separated_values">comma-separated value</a> spreadsheets) and other plain text formats (e.g. *.txt files, or other extensions …or none at all!) At a basic level, <code class="docutils literal notranslate"><span class="pre">numpy</span></code> will take any data that is <strong>delimited</strong> (i.e. separated by tabs, commas, anything—just like how an Excel .csv file is separated into cells) and import it into an array in Python. So the idea is to take any type of data, and turn it into something that Python (and hence ourselves!) can understand and work with.</p>
+<div class="tip admonition">
+<p class="admonition-title">When in doubt, look at the data!</p>
+<p>Data can by formatted in myriad ways, and it’s very hard to be sure how its formatted without looking at it! Even if not a .csv file, most data files can be opened/viewed in a simple text editor, as seen in the examples given above. If you are unsure of how your data is formatted, open it up with notepad or an equivalent text editor and take a look! This will allow you to determine how to correctly import it into Python.</p>
+</div>
+<p>Below we will see some template code to import and plot data using numpy.genfromtxt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### IMPORT AND ROUGH PLOT DATA</span>
+<span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># define where our file can be found to be imported</span>
+<span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/CdSe_EmissionSpectra.txt&#39;</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span>  
+<span class="c1"># filepath, defined below, would be the PATH to the file we are looking to have Python read.</span>
+                                <span class="n">filepath</span><span class="p">,</span>
+<span class="c1"># dtype is used to specify what the data type of the imported data is. Can be a float, integer, string, anything!</span>
+                                 <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>       
+<span class="c1"># delimiter defines what character separates columns of data. Here, it&#39;s just a space, but it could be a comma, tab, etc.</span>
+                                 <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>      
+<span class="c1"># this allows us to skip a certain number of lines at the top of our file. Often used for skipping output from instruments and software.</span>
+                                 <span class="n">skip_header</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>    
+<span class="c1"># this separates our data by columns, so we can assign each column of data to a new array, such as x and y values (wavelength, intensity)</span>
+                                 <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>       
+
+<span class="c1"># plot to try and look if data imported properly</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9d60a369a26840006a63ccacdbc470676e2af9632db7dcd638bf47f2bf588fd3.png" src="_images/9d60a369a26840006a63ccacdbc470676e2af9632db7dcd638bf47f2bf588fd3.png" />
+</div>
+</div>
+<p>(This data is the emission spectra of CdSe quantum dots with functionalized surfaces to induce a large fraction of redshifted “trap” emission. Similar data was used in <a class="reference external" href="https://doi.org/10.1021/acs.jpclett.2c03443">Hasham, M. <em>et al.</em> (Wilson) <strong>2023</strong> <em>J. Phys. Chem. Lett.</em></a>)</p>
+<p>Wonderful! We can read the data, and confirmed that we did, in fact, import it properly. However quite a bit just happened, so let’s go over a few parameters to explain what we just did and how you can use these tools.</p>
+<ul class="simple">
+<li><p>In this example, you can replace <code class="docutils literal notranslate"><span class="pre">'data/CdSe_EmissionSpectra.txt'</span></code> with a path to any other file that you want to import. (N.B. in the absence of a full file-path, when your development environment (e.g. JupyterHub, VSCode) goes looking for the file, it will pre-pend the path of the folder that your *.py or *.ipynb file is in by default.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delimiter=</span></code> defines what character separates the columns in each line/row of data. For a .csv this is a comma (csv stands for comma-seperated values, after all.) Other common delimiters (in e.g. generic .txt files) are a blank space, tab, or semicolon. For a blank space, we would use <code class="docutils literal notranslate"><span class="pre">delimiter=''</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skip_header=</span></code> allows you to skip a certain number of lines at the top of your file. Often, outputs from instruments or software will include some metadata at the top (date/time, instrument settings, etc.), which may not be useful for plotting. Here, we use <code class="docutils literal notranslate"><span class="pre">skip_header=14</span></code> to skip the first 14 lines of our file. Why 14? Because this is how many rows of metadata we saw when we looked at the data directly in a text editor!</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype=</span></code> is important because it defines which datatype numpy will expect from the data it is reading. Commonly, this will be a <a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">float</a> (a format for numbers in scientific notation), but it could also be an integer, string (i.e. characters/text), or something else entirely.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unpack=True</span></code> separates our data by columns, so we can assign each column of data to a new array, such as x and y values (wavelength, intensity).</p></li>
+</ul>
+<p>There are several other options we can specify, <a class="reference external" href="https://numpy.org/devdocs/user/basics.io.genfromtxt.html">which you can find here</a>. However, these are some of the most common ones you will encounter.</p>
+</section>
+<section id="importing-multiple-data-files-at-once">
+<h2>Importing multiple data files at once<a class="headerlink" href="#importing-multiple-data-files-at-once" title="Permalink to this heading">#</a></h2>
+<p>Often, we will have multiple sets of data that we want to collect into a single plot to visualize some trend or change. Using a simple <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, we can use <code class="docutils literal notranslate"><span class="pre">numpy.genfromtxt</span></code> on multiple files in a single folder that meet some criteria, such as having a specific file extension, or having a certain phrase in their filename.</p>
+<p>A “for loop” will perform an action repeatedly for different inputs, usually given by an array. For example, see below if we want to print each number between 1 and 10.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+ <span class="c1"># create an array of numbersf from 0 to 10, in steps of 1</span>
+<span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># for each number in the array, print it</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1"># print each number in the array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will also use a new function <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code>. This function allows us to run a terminal command through Python, in particular <code class="docutils literal notranslate"><span class="pre">dir</span></code>, which will list all of the files within a certain directory (similar to what you’d see in Windows File Explorer or iOS Finder).</p>
+<p>As an example, here is the result of the <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> command run on a folder on Prof. Wilson’s computer containinng a bunch of data files from some photoluminescence spectroscopy on CdSe quantum dots. Each file represents one spectrum, and the overall experiment sought to highlighting the dependence of emission spectra on the incident power of the laser used to excite the sample. As a result, the experimenter used the filenames as a de facto lab-book, and wrote in some key experimental parameters—most notably the excitation power in mW:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="c1"># needed to use os.listdir()</span>
+
+<span class="c1"># for each filename in the folder, print the filename</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/em_vs_laser/&#39;</span><span class="p">):</span> <span class="c1">#os.listdir() will return each file in a folder.</span>
+    <span class="c1"># print filename</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R101 532 ex 100 ms Power 550CGLP 0.13 mW.txt
+R101 532 ex 100 ms Power 550CGLP 0.25 mW.txt
+R101 532 ex 100 ms Power 550CGLP 13.78 mW.txt
+R101 532 ex 100 ms Power 550CGLP 2.52 mW.txt
+R101 532 ex 100 ms Power 550CGLP 20.6 mW.txt
+R101 532 ex 100 ms Power 550CGLP 24.9 mW.txt
+R101 532 ex 200 ms Power 550CGLP 0.093 mW.txt
+R101 532 ex 200 ms Power 550CGLP 0.211 mW.txt
+R101 532 ex 200 ms Power 550CGLP 0.597 mW.txt
+R101 532 ex 200 ms Power 550CGLP 10.6 mW.txt
+R101 532 ex 200 ms Power 550CGLP 2.03 mW.txt
+R101 532 ex 200 ms Power 550CGLP 20.0 mW.txt
+R101 532 ex 200 ms Power 550CGLP 5.45 mW.txt
+R101 532 ex 3.41 mW Integration 550CGLP 1000 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 20 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 200 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 2000 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 50 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 500 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>Useful! We can combine this command to generate a list of filenames with the previous code to import each file individually, and additional lines (from, e.g. CHM223 Computational Assignment #2) to generate a plot containing a curve for each file. See the combined code below, which you’ll believe could be endlessly adapted to import other data!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="c1"># needed to use os.listdir()</span>
+
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/em_vs_laser/&#39;</span><span class="p">):</span> <span class="c1">#os.listdir() will return each file in a folder.</span>
+    <span class="c1"># import the data from that file</span>
+    <span class="n">wavelength</span><span class="p">,</span> <span class="n">intensity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data/em_vs_laser/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                                          <span class="n">skip_header</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+                                          <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                          <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># note: an f string is used above to insert the filename variable into the filepath!</span>
+    <span class="c1"># this allows us to insert variables into strings more easily</span>
+    
+    <span class="c1"># plot the data from that file</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span><span class="n">intensity</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;wavelength&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;intensity (a.u.)&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="excluding-files-checking-the-filenames">
+<h2>Excluding files: checking the filenames<a class="headerlink" href="#excluding-files-checking-the-filenames" title="Permalink to this heading">#</a></h2>
+<p>Following on from the previous example, it’s commonly the case that you don’t want/need to plot <em>every</em> file in a given folder. However, from what you’ve learned, you can use boolean logic to specify a condition on the filenames that are imported. In this particular case with the filenames above, the data files could be grouped into two categories, each from a different sub-experiment: one measuring emission intensity vs excitation power, and the other measuring emission intensity vs integration time—the amount of time that the detector exposed to the emitted light. Because the experimenter included this information in the filenames (by including either ‘Power’ or ‘Integration’, we can write an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to test each file, and only import it if it’s a member of the desired group. For example, to only look at data referencing integration time, we can make a condition in our import and plot loop as follows (we’ll use the filnames as the legend entries):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/em_vs_laser/&#39;</span><span class="p">):</span> <span class="c1">#os.listdir() will return each file in a folder.</span>
+    <span class="c1"># import the data from that file</span>
+    <span class="n">wavelength</span><span class="p">,</span> <span class="n">intensity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data/em_vs_laser/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">skip_header</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># we can determine skip_header=14 by opening the file in a text editor and counting the number of lines before the data starts.</span>
+    <span class="c1"># check if filename has the word Integration in it</span>
+    <span class="k">if</span> <span class="s1">&#39;Integration&#39;</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span><span class="n">intensity</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span> <span class="c1"># plot the intensity</span>
+    <span class="c1"># we don&#39;t define an else statement, so if the filename does not have the word Integration in it, nothing will happen.</span>
+
+<span class="c1"># add labels and legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;wavelength&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x21cbe20e108&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="parsing-filenames-string-split">
+<h2>Parsing filenames: string.split()<a class="headerlink" href="#parsing-filenames-string-split" title="Permalink to this heading">#</a></h2>
+<p>Lastly, continuing our data-import example, we can modify the filenames if we want to be more succinct, or even extract experimental details (like the excitation power used) if we want to. In this example, the only information that we’re looking for from the filename is the integration time at the end. We can parse this out using another function called <code class="docutils literal notranslate"><span class="pre">.split</span></code>, which (you might guess) allows us to split a string into multiple smaller strings based on some character separator. For example, if we want to split the filename into ‘words’ which are each separated by a space, we could do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
+[&#39;R101&#39;, &#39;532&#39;, &#39;ex&#39;, &#39;3.41&#39;, &#39;mW&#39;, &#39;Integration&#39;, &#39;550CGLP&#39;, &#39;850&#39;, &#39;ms.txt&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we could select the eighth element in this new array of ‘words’, which (given the format of the filename) is the integration time that we’re looking for as legend labels for this experiment. Code could look like this: <code class="docutils literal notranslate"><span class="pre">words</span> <span class="pre">=</span> <span class="pre">filename.split('</span> <span class="pre">')</span></code>, and then <code class="docutils literal notranslate"><span class="pre">label=words[8]</span></code>. We can see this implemented in the previous data as a single, combined line of code, below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/em_vs_laser/&#39;</span><span class="p">):</span> <span class="c1">#os.listdir() will return each file in a folder.</span>
+    <span class="n">wavelength</span><span class="p">,</span> <span class="n">intensity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data/em_vs_laser/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">skip_header</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># import the data from that file</span>
+    <span class="c1"># check if filename has the word Integration in it</span>
+    <span class="k">if</span> <span class="s1">&#39;Integration&#39;</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">8</span><span class="p">]</span> <span class="c1"># Extract the integration time from the filename using the tools discussed above</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span><span class="n">intensity</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span> <span class="c1"># plot the intensity</span>
+    <span class="c1"># we don&#39;t define an else statement, so if the filename does not have the word Integration in it, nothing will happen.</span>
+
+<span class="c1"># add labels and legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;wavelength&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">legend</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Integration time (ms)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">3</span><span class="n">cc91fc37843</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">18</span> <span class="n">legend</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Integration time (ms)&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;legend&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Rees9/VIROSLAB",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python for Physical Chemistry</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ManipulatingData.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Manipulation &amp; Analysis in Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-data-files">Sample Data files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-importing-data-files-numpy-genfromtxt">Reading and Importing data files: numpy.genfromtxt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-multiple-data-files-at-once">Importing multiple data files at once</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excluding-files-checking-the-filenames">Excluding files: checking the filenames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-filenames-string-split">Parsing filenames: string.split()</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rees Hughes, Mark Wilson
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

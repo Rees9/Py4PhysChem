@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Rotational-Vibrational Spectroscopy: - Theory &#8212; Python for Experimental Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_tutorial';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Best Fits in Python" href="lmfit.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Python for Physical Chemistry
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ImportingData.html">Importing Data into Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ManipulatingData.html">Data Manipulation &amp; Analysis in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Visualizing Data in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lmfit.html">Best Fits in Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">(CHM223) Rotational-Vibrational Spectroscopy - Theory</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Rees9/VIROSLAB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Rees9/VIROSLAB/issues/new?title=Issue%20on%20page%20%2Flab_tutorial.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab_tutorial.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rotational-Vibrational Spectroscopy: - Theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-vibrations-and-rotation-of-a-diatomic-molecule">2 Theory: Vibrations and rotation of a diatomic molecule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">2.1 Selection rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-spectrum-structure">2.2 IR spectrum structure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-analysis">3 Spectrum Analysis</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="rotational-vibrational-spectroscopy-theory">
+<h1>Rotational-Vibrational Spectroscopy: - Theory<a class="headerlink" href="#rotational-vibrational-spectroscopy-theory" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/em_wave.png"><img alt="_images/em_wave.png" src="_images/em_wave.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Electromagnetic wave. Variable electric E and magnetic B fields are orthogonal to each other and to the direction k of propagation. lambda is the wavelength.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Spectroscopy is the study of the interaction between matter and electromagnetic waves. Historically, spectroscopy dealt with the electromagnetic radiation in a form of visible light, but it has gradually developed to cover the whole electromagnetic spectrum: from the short-wavelength <span class="math notranslate nohighlight">\(\gamma\)</span>- and X-ray radiation through ultraviolet, visible, and infrared light down to the microwave radiation. In this project we are using the infrared (IR) light to study particular types of motion of molecules: vibrations and rotations.</p>
+<p>What are the merits of the vibrational and rotational spectroscopy? It allows us to infer the geometric structure of a molecule from its absorption spectrum. HCl (shown in Fig. 2) is a polar molecule: atoms carry partial positive +q and negative −q charges. These charges interact with the electric field <span class="math notranslate nohighlight">\(\vec{E}\)</span> of an electromagnetic wave and feel the force. As a result, the molecule starts to spin about its center of mass and also to vibrate as the distance between atoms changes when the charges move in opposite directions following the time-varying electric field. Both phenomena take place simultaneously, which explains why we are dealing with a composite rotational-vibrational spectrum. Vibrations and rotation are not mechanically independent: A rotating molecule experiences the centrifugal force that tries to stretch the molecule and thus vibrations are affected. Vibrations periodically shrink and stretch the molecule, changing the average distance between atoms and affecting spinning. Just like a spinning ice-skater as she pulls her arms closer to her body she spins faster (see Atkins, Chpt. 16), so does the molecule when the bond length decreases.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/hcl.png"><img alt="_images/hcl.png" src="_images/hcl.png" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Structure of the HCl molecule.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[\vec{F} = \pm q \vec{E}\]</div>
+<p>For a diatomic molecule like HCl, <strong>we shall determine the <em>vibrational frequency, <span class="math notranslate nohighlight">\(\nu_e\)</span>, the rotational constant, <span class="math notranslate nohighlight">\(B_e\)</span>, and the vibrational correction term, <span class="math notranslate nohighlight">\(\alpha_e\)</span>.</em></strong> We can then calculate the equilibrium distance <span class="math notranslate nohighlight">\(R_e\)</span> (H–Cl bond length) and the bond force constant <span class="math notranslate nohighlight">\(k\)</span>, which characterizes the strength of the H–Cl chemical bond.</p>
+</section>
+<section id="theory-vibrations-and-rotation-of-a-diatomic-molecule">
+<h2>2 Theory: Vibrations and rotation of a diatomic molecule<a class="headerlink" href="#theory-vibrations-and-rotation-of-a-diatomic-molecule" title="Permalink to this heading">#</a></h2>
+<p>The description of Sec. 1 is based on ideas from the classical chemical structure theory, which assumes the existence of chemical bonds of certain rigidity, partial atomic charges, etc. Quantitative description of molecular systems, however, is given by the laws of quantum mechanics. The solution of the Schrödinger equation provides the rotational-vibrational energy levels <span class="math notranslate nohighlight">\(E_{rv}\)</span> which depend on the vibrational quantum number v = 0, 1, 2, … and the rotational quantum number <span class="math notranslate nohighlight">\(J = 0, 1, 2, ...\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+E_{rv}(v, J) = hB_eJ(J + 1) + h\nu_e
+\left(
+v + \frac{1}{2}
+\right)
+\tag{1}
+\]</div>
+<p>See Eqs. 17.76 and Eq. 17.81 in the Book of Levine. Here,</p>
+<div class="math notranslate nohighlight">
+\[
+B_e = \frac{h}{
+8\pi^2 \mu R_e^2} \quad
+\text{and} \quad \nu_e = \frac{1}{2\pi}
+\sqrt{\frac{k}{\mu}}
+\tag{2}
+\]</div>
+<p>are the equilibrium rotational constant and harmonic frequency, respectively. Other parameters are the
+bond force constant k and the reduced mass</p>
+<div class="math notranslate nohighlight">
+\[
+\mu = \frac{M_H M_{Cl}}
+{M_H + M_{Cl}}
+\tag{3}
+\]</div>
+<p>As follows from Eq. (1), rotational-vibrational energies of a diatomic molecule are quantized : only
+certain discrete levels are allowed by quantum mechanics. These levels are not directly observable though;
+in any sort of experiment we can only see the transitions between them, which results in absorption or
+emission of energy leading, correspondingly, to either absorption or emission spectra</p>
+<section id="selection-rules">
+<h3>2.1 Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="_images/selection_rules.png"><img alt="_images/selection_rules.png" src="_images/selection_rules.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Energy level diagram and allowed transitions in a rotational-vibrational spectrum of a diatomic molecule. The spacing between vibrational levels (∆v = 1) is large compared to those between rotational ones (∆J = ±1).</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If all possible transitions between energy levels were allowed, a hypothetical spectrum would be quite cluttered. Fortunately, only certain transitions are visible in a spectrum. Allowed transitions are determined by the physical mechanism of interaction between radiation and matter; as was mentioned in Sec. 1, a diatomic molecule has to be polar to show an IR absorption rotational-vibrational spectrum. In terms of its quantum numbers, selection rules of the IR spectrum of a diatomic molecule are</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta v = \pm 1, \Delta J = ±1. \tag{4}
+\]</div>
+<p>Allowed transitions are conveniently represented on the energy diagram, Fig. 3. At room temperature, the energy spacing between vibrational levels of HCl is large compared to the characteristic thermal energy, and the majority of molecules are at their ground vibration level, so that the absorption spectrum corresponds to a ∆v = +1 transition (from the ground vibrational level to the ﬁrst excited state).</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="_images/ftir_spectra_labels.png"><img alt="_images/ftir_spectra_labels.png" src="_images/ftir_spectra_labels.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Rotational-vibrational infrared spectrum of HCl. Note the absence of a Q branch, which would have been located in between P and R branches but is forbidden by selection rules.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>By convention, a series of transitions for which ∆J = −1 is called a P branch, and a series of lines for which ∆J = +1 is called an R branch. An R branch transition originating in state J and terminating in state (J + 1) is written as R(J), and a P branch transition originating in state J and terminating in state (J − 1) is written as P (J). Q branch, in which ∆J = 0 can occur in some cases, but not in the rotational-vibrational spectra of diatomic molecules, so we will ignore them.</p>
+</section>
+<section id="ir-spectrum-structure">
+<h3>2.2 IR spectrum structure<a class="headerlink" href="#ir-spectrum-structure" title="Permalink to this heading">#</a></h3>
+<p>A recorded IR spectrum for a HCl molecule is plotted in Fig. 4. It has the expected structure: there are two series of lines, P and R branches, with a gap between them. This gap, which is a Q branch, would correspond to a pure vibrational (∆v = 1, ∆J = 0) transition with a frequency <span class="math notranslate nohighlight">\(\nu_e\)</span>—if it were not forbidden. We observe also that distance between peaks is not quite constant as one would expect from Eq. (1)! For example, for the R branch</p>
+<div class="math notranslate nohighlight">
+\[
+R(J) = E_{rv}(1, J + 1) − E_{rv}(0, J) = h \nu_e + 2hB_e(J + 1), \tag{5}
+\]</div>
+<p>and the distance between neighboring peaks <span class="math notranslate nohighlight">\(R(J + 1) − R(J) = 2hB_e\)</span> should be a constant. The reason for this variable spacing is the following: Typically, a molecular vibration takes on the order of <span class="math notranslate nohighlight">\(10^{-14}\)</span> s. A molecular rotation is normally much slower, taking <span class="math notranslate nohighlight">\(10^{−9}\)</span> s to <span class="math notranslate nohighlight">\(10^{−10}\)</span> s. Hence, as a molecule rotates one revolution, it vibrates many times. To account for this, we have to replace <span class="math notranslate nohighlight">\(R_e\)</span> in the deﬁnition of the rotational constant, Eq. (2), with a vibrationally averaged <span class="math notranslate nohighlight">\(R\)</span>. In the simplest approximation, this leads to the v-dependence of the rotational constant,</p>
+<div class="math notranslate nohighlight">
+\[
+B_v = B_e − \alpha_e
+\left(
+v + \frac{1}{2}
+\right)
+\tag{6}
+\]</div>
+<p>For example, <span class="math notranslate nohighlight">\(B_0\)</span> is the rotational constant for <span class="math notranslate nohighlight">\(v = 0\)</span> and <span class="math notranslate nohighlight">\(B_1\)</span> is the rotational constant when <span class="math notranslate nohighlight">\(v=1\)</span>. The rotational-vibrational energy (1) has to be modiﬁed accordingly,</p>
+<div class="math notranslate nohighlight">
+\[
+E_{rv}(v, J) = hB_v J(J + 1) + h\nu_e
+\left(
+v + \frac{1}{2}
+\right)
+\tag{7}
+\]</div>
+<p>This equation provides the basis for analyzing the vibration-rotation spectrum of HCl.</p>
+</section>
+</section>
+<section id="spectrum-analysis">
+<h2>3 Spectrum Analysis<a class="headerlink" href="#spectrum-analysis" title="Permalink to this heading">#</a></h2>
+<p>Using Eq. (7), we can derive an expression for frequencies in the R and P branches</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+R(J) &amp;= E_{rv}(1, J + 1) − E_{rv}(0, J) = h\nu_e + 2hB_e(J + 1) − hα_e(J + 1)(J + 3),
+\tag{8} \\
+P (J) &amp;= E_{rv}(1, J − 1) − E_{rv}(0, J) = h\nu_e − 2hB_eJ − hα_eJ(J − 2).
+\tag{9}
+\end{align}
+\end{split}\]</div>
+<p>Equations (8) and (9) can be simpliﬁed further to assist you in determining <span class="math notranslate nohighlight">\(\nu_e\)</span>, <span class="math notranslate nohighlight">\(B_e\)</span>, and <span class="math notranslate nohighlight">\(\alpha_e\)</span> from your assigned spectral frequencies. Substituting <span class="math notranslate nohighlight">\(n = J + 1\)</span> in Eq. (8), and <span class="math notranslate nohighlight">\(n = −J\)</span> in Eq. (9), we combine them together in a single equation</p>
+<div class="math notranslate nohighlight">
+\[
+\nu_{R,P}(n) = \nu_e + 2 (B_e − α_e) n − α_e n^2. \tag{10}
+\]</div>
+<p>We can now plot the results for both branches of the spectrum on the same graph. Fitting data to a non-linear regression (of a particular functional form you might recognize) by Eq. (10) will yield us several quantities that allow us to calculate our desired physical characteristics of the molecule and allowed transitions.</p>
+<p>Alternatively, we can take the diﬀerence between pairs, rather than the spectral frequencies themselves, to simplify your data plot,</p>
+<div class="math notranslate nohighlight">
+\[
+∆\nu_{R,P}(n) = ν_{R,P}(n + 1) − ν_{R,P}(n) = (2B_e − 3α_e) − 2α_en.
+\tag{11}
+\]</div>
+<p>Fitting data by Eq. (11) with a linear regression will give us <span class="math notranslate nohighlight">\(−2\alpha_e\)</span> as a slope and <span class="math notranslate nohighlight">\((2B_e − 3\alpha_e)\)</span> from the intercept.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Rees9/VIROSLAB",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lmfit.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Best Fits in Python</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-vibrations-and-rotation-of-a-diatomic-molecule">2 Theory: Vibrations and rotation of a diatomic molecule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">2.1 Selection rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-spectrum-structure">2.2 IR spectrum structure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-analysis">3 Spectrum Analysis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rees Hughes, Mark Wilson
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
