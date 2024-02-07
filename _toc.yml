@@ -1,0 +1,18 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: ImportingData
+  title: Importing Data into Python
+- file: ManipulatingData
+  title: Data Manipulation & Analysis in Python
+- file: plotting
+  title: Visualizing Data in Python
+- file: lmfit
+  title: Best Fits in Python
+- file: lab_tutorial
+  title: (CHM223) Rotational-Vibrational Spectroscopy - Theory
+#- file: pib
+#  title: Interactive - Particle-in-a-box Wavefunctions

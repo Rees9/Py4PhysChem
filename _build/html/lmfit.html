@@ -1,0 +1,792 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Best Fits in Python &#8212; Python for Experimental Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lmfit';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Rotational-Vibrational Spectroscopy: - Theory" href="lab_tutorial.html" />
+    <link rel="prev" title="Visualizing Data in Python" href="plotting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Python for Physical Chemistry
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ImportingData.html">Importing Data into Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ManipulatingData.html">Data Manipulation &amp; Analysis in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Visualizing Data in Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Best Fits in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_tutorial.html">(CHM223) Rotational-Vibrational Spectroscopy - Theory</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Rees9/VIROSLAB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Rees9/VIROSLAB/issues/new?title=Issue%20on%20page%20%2Flmfit.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lmfit.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Best Fits in Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regressions">Linear regressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-linear-regressions">Non-Linear Regressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-reality-of-non-linear-fits-models-and-data">The reality of non-linear fits: Models and Data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="best-fits-in-python">
+<h1>Best Fits in Python<a class="headerlink" href="#best-fits-in-python" title="Permalink to this heading">#</a></h1>
+<p>Here, we will discuss how we generate “trendlines” like in Excel, except here we will do so with much more flexiblity utilizing the powerful package known as <code class="docutils literal notranslate"><span class="pre">lmfit</span></code></p>
+<section id="linear-regressions">
+<h2>Linear regressions<a class="headerlink" href="#linear-regressions" title="Permalink to this heading">#</a></h2>
+<p>Linear regressions are extremely important to experimental chemistry. A lot of measurement devices will often return unitless values, signals, voltages, etc. through analog or digital outputs. It is then up to the experimentalist to be able to analyze that data, and calibrate it properly in order to obtain any physical significance of any individual measurement.</p>
+<p>We can have some unknown instrument response to a known quantity, such as concentration. Then, by varying the concentration and observing the change in signal, we can create a <strong>calibration curve</strong>. This is the basis of a lot of concentration-dependent investigations in chemistry. Additionally, you are probably already well aware of how linear best fits can allow us to determine the reaction rates of first-order rate laws.</p>
+<p>To start, let’s look at some of our previous data. In the “Manipulating Data” module, we imported and extracted data representing the peak emission intensity versus the integration time under laser excitation. Here, let’s use that data to obtain a calibration curve for our emission intensity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># import data</span>
+<span class="n">max_array</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">inttime_array</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/em_vs_laser/&#39;</span><span class="p">):</span> <span class="c1">#os.listdir() will return each file in a folder.</span>
+    <span class="n">wavelength</span><span class="p">,</span> <span class="n">intensity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data/em_vs_laser/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">skip_header</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># import the data from that file</span>
+    <span class="c1"># extract the integration time from the filename</span>
+    <span class="k">if</span> <span class="s1">&#39;Integration&#39;</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="c1"># truncate data to exclude possible laser peak</span>
+        <span class="n">intensity</span> <span class="o">=</span> <span class="n">intensity</span><span class="p">[(</span><span class="n">wavelength</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">575</span><span class="p">]</span> <span class="c1"># only fetch max from 575 nm and above, as laser peak is at 532 nm</span>
+        <span class="n">max_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">intensity</span><span class="p">))</span>
+<span class="n">inttime_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">2000</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">850</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inttime_array</span><span class="p">,</span><span class="n">max_array</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;integration time (ms) &#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Max intensity vs integration time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R101 532 ex 3.41 mW Integration 550CGLP 1000 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 20 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 200 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 2000 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 50 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 500 ms.txt
+R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Max intensity vs integration time&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will be using the <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> package, which we can import as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lmfit</span> <span class="kn">import</span> <span class="n">Model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we know we can extract the rate constant by a linear best fit. Using <strong>lmfit</strong>, we can define the function we want to fit.</p>
+<p>For a linear equation (<span class="math notranslate nohighlight">\(y=mx + b\)</span>), we can define our equation as</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">best_fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span> <span class="c1"># write our function here</span>
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we can perform a best fit using some <strong>initial parameters</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define our model based on some input function</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">best_fit</span><span class="p">)</span>
+
+<span class="c1"># make a best fit of our data</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">max_array</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">inttime_array</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span> <span class="c1"># intial guesses for m and b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">fit_report</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[Model]]
+    Model(best_fit)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 7
+    # data points      = 7
+    # variables        = 2
+    chi-square         = 6080061.21
+    reduced chi-square = 1216012.24
+    Akaike info crit   = 99.7223062
+    Bayesian info crit = 99.6141265
+    R-squared          = 0.99759140
+[[Variables]]
+    m:  29.1372245 +/- 0.64027826 (2.20%) (init = 30)
+    b:  528.737569 +/- 593.542736 (112.26%) (init = 500)
+[[Correlations]] (unreported correlations are &lt; 0.100)
+    C(m, b) = -0.7120
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we can see all the statistical measures of our fit. The fit statistics are good to investigate and reference to see how well the fit actually performed, but the important results are in the <strong>[[variables]]</strong> part.</p>
+<p>We can also plot our best fit to compare to our experimental data below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot out data on a logarithmic scale</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inttime_array</span><span class="p">,</span><span class="n">max_array</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="c1"># plot our best fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">inttime_array</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">best_fit</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;best fit&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># label our plot properly</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ln([conc])&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/67f6e09683a5eff8a3b7cf2dcff56876062edafabfaaf5daca55ab5e6647c4e6.png" src="_images/67f6e09683a5eff8a3b7cf2dcff56876062edafabfaaf5daca55ab5e6647c4e6.png" />
+</div>
+</div>
+<p>What we observe is a visually good fit, and we can further investigate how it varies with each data point by plotting the residuals themselves.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the residuals</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inttime_array</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">residual</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;residuals&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;integration time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;residuals&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;residuals&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The residuals plot is very useful, as it allows us to see how good our fit is for various data points, and also tell us (much better than a r squared value!) how well our model actually fits our data. If a linear function correctly describes the relationship we are plotting, we expect the residuals to be randomly distributed. If there is some noticeable error, we will often see a pattern in our residuals. <a class="reference external" href="https://uoftchem-teaching.github.io/R4EnvChem/modelling-linear-regression.html#vizualizing-residuals">You can find some examples of such here on the R4EnvChem notebook</a></p>
+</section>
+<section id="non-linear-regressions">
+<h2>Non-Linear Regressions<a class="headerlink" href="#non-linear-regressions" title="Permalink to this heading">#</a></h2>
+<div class="important admonition">
+<p class="admonition-title">For CHM223 students</p>
+<p>This subsection is relevant for your assignment!</p>
+</div>
+<p>Linear regressions are useful, but we can usually do easily in Excel. The real advantage of python and more specifically <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> is it’s use in fitting to <strong>non-linear models</strong> which vary from a simple sloped line.</p>
+<p>What do we mean by non-linear? Anything you could think of! Quadratic, exponential, power-law, gaussian, etc.
+To start, let’s look at the hydrolysis data we plotted earlier to see if we can extract some quantities related to the rate law. We know that if the rate law is first order, taking the logarithm of the concentration over time will give us a linear trend, which we can then use to find the corrusponding rate of reaction. However, with non-linear fitting, we can just simply fit the data directly to an exponential function instead!</p>
+<p>Remember, for a first order reaction, we expect the concentration over time to follow</p>
+<div class="math notranslate nohighlight">
+\[
+[\text{A}] = [\text{A}]_0 e^{-k t}
+\]</div>
+<p>Therefore, rather than taking the logarithm of our data, let’s simply fit it to an exponential function!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">lmfit</span> <span class="kn">import</span> <span class="n">Model</span>
+
+<span class="n">time</span><span class="p">,</span> <span class="n">conc_aspirin</span><span class="p">,</span> <span class="n">conc_acid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;data/aspirin_data.txt&#39;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skip_header</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># convert concentration to logarithmic scale</span>
+<span class="c1"># plot our data and label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">conc_aspirin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Aspirin&#39;</span><span class="p">)</span>
+
+<span class="c1"># label x and y axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (hr)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Concentration (M)&#39;</span><span class="p">)</span>
+
+<span class="c1"># create plot title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Aspirin Hydrolysis in an Aqueous Solution at pH 7.0 and 37 C&#39;</span><span class="p">)</span>
+
+<span class="c1"># set y-axis to logarithmic scale</span>
+<span class="c1">#plt.yscale(&#39;log&#39;)</span>
+
+<span class="c1"># create legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># define fit function</span>
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">A</span><span class="p">):</span>
+    <span class="c1">### CHANGE YOUR FIT FUNCTION HERE ###</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="c1"># define our model based on some input function</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+
+<span class="c1"># make a best fit of our data</span>
+<span class="c1">### CHANGE YOUR INITIAL GUESSES HERE ###</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">conc_aspirin</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="mf">0.005</span><span class="p">)</span> <span class="c1"># intial guesses for k and A </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">fit_report</span><span class="p">())</span>
+
+<span class="c1"># plot our best fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">best_fit</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;best fit&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># and create a plot of the residuals!</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> <span class="c1"># create a new figure</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">residual</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;residuals&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (hr)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Residuals of Aspirin Hydrolysis in an Aqueous Solution at pH 7.0 and 37 C&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[Model]]
+    Model(function)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 29
+    # data points      = 16
+    # variables        = 2
+    chi-square         = 6.4251e-10
+    reduced chi-square = 4.5894e-11
+    Akaike info crit   = -379.011555
+    Bayesian info crit = -377.466377
+    R-squared          = 0.99999045
+[[Variables]]
+    k:  0.00369876 +/- 6.1801e-06 (0.17%) (init = 0.1)
+    A:  0.00554737 +/- 2.7270e-06 (0.05%) (init = 0.005)
+[[Correlations]] (unreported correlations are &lt; 0.100)
+    C(k, A) = +0.4661
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Residuals of Aspirin Hydrolysis in an Aqueous Solution at pH 7.0 and 37 C&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>What we are able to do is directly determine the initial concentration and the rate of reaction, without doing ANY calculations ourselves to transform a linear slope into the quantity we care about.</p>
+<p>Non-linear fitting is extremely powerful, because the possibilities for a choice of model function are endless. We’ve only shown one simpler example here, but you can use any functional form to fit any data that you need. <a class="reference external" href="https://github.com/wholden/jupyter-lmfit">Check out this page for an interactive module utilizing lmfit with robust function selection</a>, or the <a class="reference external" href="https://lmfit.github.io/lmfit-py/builtin_models.html">source documentation outlining examples of built in functional forms you can use</a></p>
+</section>
+<section id="the-reality-of-non-linear-fits-models-and-data">
+<h2>The reality of non-linear fits: Models and Data<a class="headerlink" href="#the-reality-of-non-linear-fits-models-and-data" title="Permalink to this heading">#</a></h2>
+<p>It is important to acknowledge that when it comes to non-linear fits, it is very easy to find a great looking fit to your data when what you’re looking for is a functional form. On the other hand, a best fit is a model and just that; a model function which happens to line up with the trends in your data. But what’s important to know is that it is meaningless unless there is physical, or proveable signifiance in the functional form and the coefficients. Any data you ever have will almost always fit well if you just keep adding polynomial terms. But what is significant is where those terms come from, and how we can motivate them through expected behaviour, either from theory or experiment.</p>
+<p>For example, Quantum Dots are semiconducting nanocrystals a few nanometers in diameter that have size-tuneable absorption energies/wavelengths due to quantum confinement. We can vary the size of these nanoparticles then to achieve particles which absorb wavelengths across the visible spectrum of. This trend would be useful to know and be able to predict, and Yu et al showed that you could do this in 2003.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/yu_QD_sizecurve.png"><img alt="_images/yu_QD_sizecurve.png" src="_images/yu_QD_sizecurve.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Adapted from Yu, W. et al (2003). Experimental determination of the extinction coefficient of CdTe, CdSe, and CdS nanocrystals. Chemistry of materials, 15(14), 2854-2860.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/yu_QD_sizecurve_eqns.png"><img alt="_images/yu_QD_sizecurve_eqns.png" src="_images/yu_QD_sizecurve_eqns.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Adapted from Yu, W. et al (2003). Experimental determination of the extinction coefficient of CdTe, CdSe, and CdS nanocrystals. Chemistry of materials, 15(14), 2854-2860.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is useful, as it allows us to predict the size from the absorption spectra alone and vice versa. But, there is an important paragraph from Yu et al. just below these equations in the source material</p>
+<blockquote>
+<div><p>“<em>In the above equations, D (nm) is the size of a given nanocrystal sample, and λ (nm) is the wavelength of the first  excitonic  absorption  peak  of  the  corresponding sample. <strong>It  must  be  pointed  out  that  the  functions provided above are only polynomial fitting functions of the experimental data, which may become invalid in the size ranges not covered by the data shown in Figure 2.</strong></em>”</p>
+</div></blockquote>
+<p>While the fit function does a good job of tracking a trend through the data that is input, all it shows is just that; there is a trend in <em>this specific range of data.</em> For larger or smaller sizes, there is no feasible way to predict what would happen to the absorption peaks from this data alone. Furthermore, <strong>there is absolutely nothing physical about the equations above</strong>. There is no theory or experimental evidence involved that would imply that this is <em>the</em> functional form that best describes the size evolution of quantum dots. What it does provide is a useful tool, and it’s important to remember the limits of the usefulness in fitting data.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Rees9/VIROSLAB",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plotting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Visualizing Data in Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab_tutorial.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Rotational-Vibrational Spectroscopy: - Theory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regressions">Linear regressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-linear-regressions">Non-Linear Regressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-reality-of-non-linear-fits-models-and-data">The reality of non-linear fits: Models and Data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rees Hughes, Mark Wilson
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
