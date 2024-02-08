@@ -416,6 +416,7 @@ document.write(`
 <span class="c1"># Import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># define where our file can be found to be imported</span>
 <span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/D1 AZTS crude.csv&#39;</span>
@@ -431,7 +432,7 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ppm = &#39;</span><span class="p">,</span><span class="n">ppm</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;signal = &#39;</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ppm</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span> <span class="c1"># plt.plot(xvalues, yvalues)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ppm</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span> <span class="c1"># plt.plot(xvalues, yvalues);</span>
 </pre></div>
 </div>
 </div>
@@ -440,9 +441,10 @@ document.write(`
 signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x24fc06c3948&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x192437202c8&gt;]
 </pre></div>
 </div>
+<img alt="_images/0858c9bd1bffe2c6efed6c93a2b2b432f6049b56d8fc199041136ea8a5addeb5.png" src="_images/0858c9bd1bffe2c6efed6c93a2b2b432f6049b56d8fc199041136ea8a5addeb5.png" />
 </div>
 </div>
 <section id="truncating-data-with-boolean-logic">
@@ -487,6 +489,9 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/33e8d877b7492485d1c42fe53838cab919759a530a8b317959bed6749c902ac9.png" src="_images/33e8d877b7492485d1c42fe53838cab919759a530a8b317959bed6749c902ac9.png" />
+</div>
 </div>
 </section>
 <section id="finding-peaks-scipy-find-peaks">
@@ -511,6 +516,7 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">find_peaks</span>
 
 <span class="c1"># define where our file can be found to be imported</span>
@@ -553,6 +559,7 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
  6.9973  7.01516 7.06386 7.08245]
 </pre></div>
 </div>
+<img alt="_images/1e4097caa95c98d81acfb1e061221bfa8187c5361f987a00ab1ac62fbb3a023f.png" src="_images/1e4097caa95c98d81acfb1e061221bfa8187c5361f987a00ab1ac62fbb3a023f.png" />
 </div>
 </div>
 </section>
@@ -567,6 +574,7 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># define where our file can be found to be imported</span>
 <span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/CdSe_EmissionSpectra.txt&#39;</span>
@@ -588,14 +596,12 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (a.u.)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectrum of CdSe Quantum Dots after Background Subtraction&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x24fd21c2308&gt;
-</pre></div>
-</div>
+<img alt="_images/13f28b2f4f1205af54530e578899b0e18444630a1a5088561457e5c4429f6146.png" src="_images/13f28b2f4f1205af54530e578899b0e18444630a1a5088561457e5c4429f6146.png" />
 </div>
 </div>
 </section>
@@ -609,6 +615,7 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># define where our file can be found to be imported</span>
 <span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/CdSe_EmissionSpectra.txt&#39;</span>
@@ -642,14 +649,12 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (norm.)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectrum of CdSe Quantum Dots after Normalization&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x24fc160f9c8&gt;
-</pre></div>
-</div>
+<img alt="_images/2065941666689b88161d6799a386b0d566874dce958ff8065e7b67f2082f74ff.png" src="_images/2065941666689b88161d6799a386b0d566874dce958ff8065e7b67f2082f74ff.png" />
 </div>
 </div>
 <p>This is especially useful when comparing distinct spectra, such as in the case where we need to import multiple files.</p>
@@ -667,6 +672,7 @@ E_{\lambda} = \frac{1239.8}{\lambda}  \text{ eV}
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># define where our file can be found to be imported</span>
 <span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/CdSe_EmissionSpectra.txt&#39;</span>
@@ -687,14 +693,12 @@ E_{\lambda} = \frac{1239.8}{\lambda}  \text{ eV}
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Energy (eV)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (a.u.)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectrum of CdSe Quantum Dots, energy x-axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectrum of CdSe Quantum Dots, energy x-axis&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Emission Spectrum of CdSe Quantum Dots, energy x-axis&#39;)
-</pre></div>
-</div>
+<img alt="_images/d89bf4c55e47a982acd439d8d0c47f4b87a4b8369103e46b09e98e3f2e457580.png" src="_images/d89bf4c55e47a982acd439d8d0c47f4b87a4b8369103e46b09e98e3f2e457580.png" />
 </div>
 </div>
 <p>Generally we plot energy from highest to lowest, however by default <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> plots from lowest to highest values. This is common for many other plots, such as NMR plots which we will see later below. We can easily fix this by reversing the order of our axis limits to <code class="docutils literal notranslate"><span class="pre">plt.xlim(max,min)</span></code> rather than the typical min, max order. We can easily obtain the minimum and maximum values for our x-axis by calling <code class="docutils literal notranslate"><span class="pre">max(x)</span></code> and <code class="docutils literal notranslate"><span class="pre">min(x)</span></code> respectively, where <code class="docutils literal notranslate"><span class="pre">x</span></code> is whatever label we use for our x-data. See below for example</p>
@@ -708,14 +712,12 @@ E_{\lambda} = \frac{1239.8}{\lambda}  \text{ eV}
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Energy (eV)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (a.u.)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectrum of CdSe Quantum Dots, reversed energy x-axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectrum of CdSe Quantum Dots, reversed energy x-axis&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Emission Spectrum of CdSe Quantum Dots, reversed energy x-axis&#39;)
-</pre></div>
-</div>
+<img alt="_images/826fc8bcde09aab0830368eb5f1ae140030a3920c455eb80d656630c7432c1ba.png" src="_images/826fc8bcde09aab0830368eb5f1ae140030a3920c455eb80d656630c7432c1ba.png" />
 </div>
 </div>
 <p>Additionally, We also may want to do this with our data arrays themselves. To do this, we can simply use <code class="docutils literal notranslate"><span class="pre">np.flip</span></code> as below on our NMR data for example</p>

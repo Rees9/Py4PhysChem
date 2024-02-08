@@ -1,8 +1,6 @@
 # Python for Physical Chemistry
 
-*Rees Hughes, Mark Wilson*
-
-*Last build on: 2024-01-12*
+*By Rees Hughes & Mark Wilson*
 
 # How to use this Textbook
 ## Introduction

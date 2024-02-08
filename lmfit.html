@@ -415,6 +415,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="c1"># import data</span>
@@ -433,7 +434,7 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inttime_array</span><span class="p">,</span><span class="n">max_array</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;integration time (ms) &#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Max intensity vs integration time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Max intensity vs integration time&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -447,9 +448,7 @@ R101 532 ex 3.41 mW Integration 550CGLP 500 ms.txt
 R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Max intensity vs integration time&#39;)
-</pre></div>
-</div>
+<img alt="_images/cd4c67e97605813f985a8e88af9d36e3077436fd17c2f049090e896dd97fd6ea.png" src="_images/cd4c67e97605813f985a8e88af9d36e3077436fd17c2f049090e896dd97fd6ea.png" />
 </div>
 </div>
 <p>We will be using the <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> package, which we can import as follows</p>
@@ -518,13 +517,12 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 <span class="c1"># label our plot properly</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ln([conc])&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/67f6e09683a5eff8a3b7cf2dcff56876062edafabfaaf5daca55ab5e6647c4e6.png" src="_images/67f6e09683a5eff8a3b7cf2dcff56876062edafabfaaf5daca55ab5e6647c4e6.png" />
+<img alt="_images/36631bd522a5f882efde308c7dfb1cbac3e60b3c0ec6f139d797496aa60e624c.png" src="_images/36631bd522a5f882efde308c7dfb1cbac3e60b3c0ec6f139d797496aa60e624c.png" />
 </div>
 </div>
 <p>What we observe is a visually good fit, and we can further investigate how it varies with each data point by plotting the residuals themselves.</p>
@@ -533,14 +531,12 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the residuals</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inttime_array</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">residual</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;residuals&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;integration time (ms)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;residuals&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;residuals&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;residuals&#39;)
-</pre></div>
-</div>
+<img alt="_images/70dbdd8593e4005770d9df055083ab825aebc7ea03427d5fbc3eeaa1351a5231.png" src="_images/70dbdd8593e4005770d9df055083ab825aebc7ea03427d5fbc3eeaa1351a5231.png" />
 </div>
 </div>
 <p>The residuals plot is very useful, as it allows us to see how good our fit is for various data points, and also tell us (much better than a r squared value!) how well our model actually fits our data. If a linear function correctly describes the relationship we are plotting, we expect the residuals to be randomly distributed. If there is some noticeable error, we will often see a pattern in our residuals. <a class="reference external" href="https://uoftchem-teaching.github.io/R4EnvChem/modelling-linear-regression.html#vizualizing-residuals">You can find some examples of such here on the R4EnvChem notebook</a></p>
@@ -565,6 +561,7 @@ To start, let’s look at the hydrolysis data we plotted earlier to see if we ca
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">from</span> <span class="nn">lmfit</span> <span class="kn">import</span> <span class="n">Model</span>
 
 <span class="n">time</span><span class="p">,</span> <span class="n">conc_aspirin</span><span class="p">,</span> <span class="n">conc_acid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;data/aspirin_data.txt&#39;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skip_header</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -610,7 +607,7 @@ To start, let’s look at the hydrolysis data we plotted earlier to see if we ca
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">residual</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;residuals&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (hr)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Residuals of Aspirin Hydrolysis in an Aqueous Solution at pH 7.0 and 37 C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Residuals of Aspirin Hydrolysis in an Aqueous Solution at pH 7.0 and 37 C&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -634,9 +631,8 @@ To start, let’s look at the hydrolysis data we plotted earlier to see if we ca
     C(k, A) = +0.4661
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Residuals of Aspirin Hydrolysis in an Aqueous Solution at pH 7.0 and 37 C&#39;)
-</pre></div>
-</div>
+<img alt="_images/4b8e805eb9d21a0a4b92e11d56f5c0e89785c625c81bdcf5bddb00b6264d196e.png" src="_images/4b8e805eb9d21a0a4b92e11d56f5c0e89785c625c81bdcf5bddb00b6264d196e.png" />
+<img alt="_images/dccfe27c5b0ad9920168063e7d155454480982611c496e35c1529950e78be63a.png" src="_images/dccfe27c5b0ad9920168063e7d155454480982611c496e35c1529950e78be63a.png" />
 </div>
 </div>
 <p>What we are able to do is directly determine the initial concentration and the rate of reaction, without doing ANY calculations ourselves to transform a linear slope into the quantity we care about.</p>
