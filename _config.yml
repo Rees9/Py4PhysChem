@@ -3,7 +3,7 @@
 
 title: Python for Experimental Chemistry
 author: Rees Hughes, Mark Wilson
-copyright: 2024
+copyright: '2024'
 logo: images/logo.png
 
 # Force re-execution of notebooks on each build.
@@ -41,8 +41,7 @@ sphinx:
   config:
     html_show_copyright: false
 
-# activate Thebe integration?
+# activate Thebe integration
 # See https://jupyterbook.org/interactive/execute.html#thebelab
 launch_buttons:
-  binderhub_url: "https://mybinder.org/v2/gh/Rees9/Py4PhysChem/master"  # The URL for your BinderHub (e.g., https://mybinder.org)
   thebe: true
