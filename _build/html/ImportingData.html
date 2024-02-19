@@ -515,7 +515,23 @@ document.write(`
 <p>(This data is the emission spectra of CdSe quantum dots with functionalized surfaces to induce a large fraction of redshifted “trap” emission. Similar data was used in <a class="reference external" href="https://doi.org/10.1021/acs.jpclett.2c03443">Hasham, M. <em>et al.</em> (Wilson) <strong>2023</strong> <em>J. Phys. Chem. Lett.</em></a>)</p>
 <p>Wonderful! We can read the data, and confirmed that we did, in fact, import it properly. However quite a bit just happened, so let’s go over a few parameters to explain what we just did and how you can use these tools.</p>
 <ul class="simple">
-<li><p>In this example, you can replace <code class="docutils literal notranslate"><span class="pre">'data/CdSe_EmissionSpectra.txt'</span></code> with a path to any other file that you want to import. (N.B. in the absence of a full file-path, when your development environment (e.g. JupyterHub, VSCode) goes looking for the file, it will pre-pend the path of the folder that your *.py or *.ipynb file is in by default.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filepath</span></code> is the variable containing location and name of the file to be imported. Given how we set things up in this textbook on github, it is <code class="docutils literal notranslate"><span class="pre">data/CdSe_EmissionSpectra.txt</span></code> in this example. In other words, this particularly data file is in a sub-folder called <code class="docutils literal notranslate"><span class="pre">data</span></code>, and the filename is <code class="docutils literal notranslate"><span class="pre">CdSe_EmissionSpectra.txt</span></code>.</p>
+<ul>
+<li><p>Naturally, you could replace ‘data/CdSe_EmissionSpectra.txt’ with the path+name of any other file that you want to import. Filenames are relatively straightforward, but to avoid confusion we should talk about ‘paths’ briefly:</p></li>
+<li><p>In the absence of a full file-path, when your development environment (e.g. JupyterHub, VSCode) goes looking for the file, it will pre-pend the path of the folder that your python file is in by default (i.e. *.py or *.ipynb file)</p>
+<ul>
+<li><p>As a result, if you’re using a web-based environment (e.g. JupyterHub), you’ll need to upload the relevant data file so that it’s in the same (web) folder as your active <code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code> file.</p></li>
+<li><p>If you’re using a desktop-based environment, you’ll likely have a good idea of where your python file is located, so you can make sure that the data file is located there (on in, e.g., a sub-folder.) Note that you can specify a different default execution folder in many development environments if you prefer.</p></li>
+<li><p>Alternatively, you could use a full file-path, such as:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">C:\Users\Wilson\Documents\CHM223\data.csv</span></code> (on Windows), or</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/Users/Wilson/Downloads/data.txt</span></code> when using macOS</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">delimiter=</span></code> defines what character separates the columns in each line/row of data. For a .csv this is a comma (csv stands for comma-seperated values, after all.) Other common delimiters (in e.g. generic .txt files) are a blank space, tab, or semicolon. For a blank space, we would use <code class="docutils literal notranslate"><span class="pre">delimiter=''</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">skip_header=</span></code> allows you to skip a certain number of lines at the top of your file. Often, outputs from instruments or software will include some metadata at the top (date/time, instrument settings, etc.), which may not be useful for plotting. Here, we use <code class="docutils literal notranslate"><span class="pre">skip_header=14</span></code> to skip the first 14 lines of our file. Why 14? Because this is how many rows of metadata we saw when we looked at the data directly in a text editor!</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dtype=</span></code> is important because it defines which datatype numpy will expect from the data it is reading. Commonly, this will be a <a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">float</a> (a format for numbers in scientific notation), but it could also be an integer, string (i.e. characters/text), or something else entirely.</p></li>
@@ -674,7 +690,7 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 </div>
 </div>
 </div>
-<p>Then, we could select the eighth element in this new array of ‘words’, which (given the format of the filename) is the integration time that we’re looking for as legend labels for this experiment. Code could look like this: <code class="docutils literal notranslate"><span class="pre">words</span> <span class="pre">=</span> <span class="pre">filename.split('</span> <span class="pre">')</span></code>, and then <code class="docutils literal notranslate"><span class="pre">label=words[8]</span></code>. We can see this implemented in the previous data as a single, combined line of code, below:</p>
+<p>Then, we could select the eighth element in this new array of ‘words’, which (given the format of the filename) is the integration time that we’re looking for as legend labels for this experiment. Code could look like this: <code class="docutils literal notranslate"><span class="pre">words</span> <span class="pre">=</span> <span class="pre">filename.split('</span> <span class="pre">')</span></code>, and then <code class="docutils literal notranslate"><span class="pre">label=words[7]</span></code>. We can see this implemented in the previous data as a single, combined line of code, below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
@@ -687,20 +703,23 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
     <span class="n">wavelength</span><span class="p">,</span> <span class="n">intensity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data/em_vs_laser/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">skip_header</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># import the data from that file</span>
     <span class="c1"># check if filename has the word Integration in it</span>
     <span class="k">if</span> <span class="s1">&#39;Integration&#39;</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">8</span><span class="p">]</span> <span class="c1"># Extract the integration time from the filename using the tools discussed above</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span> <span class="c1"># Extract the integration time from the filename using the tools discussed above</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span><span class="n">intensity</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span> <span class="c1"># plot the intensity</span>
-    <span class="c1"># we don&#39;t define an else statement, so if the filename does not have the word Integration in it, nothing will happen.</span>
+    <span class="c1"># we don&#39;t define an else statement, so if the filename does not have the word Integration in it, nothing will happen.# add labels and legend</span>
 
-<span class="c1"># add labels and legend</span>
+<span class="c1"># create plot labels</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;wavelength&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission spectra at different integration times (ms)&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Intensity of emission spectra at different integration times&#39;</span><span class="p">)</span>
+
+<span class="c1"># create legend and set title</span>
+<span class="n">legend</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">legend</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Integration time (ms)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/52a5eab86a9f53273de4d569d937b04bb915ab657d9b2072bed19a7ecaef964c.png" src="_images/52a5eab86a9f53273de4d569d937b04bb915ab657d9b2072bed19a7ecaef964c.png" />
+<img alt="_images/7b5c6fbf0a8b172e8e1a7b808a0a2c32f01d51988202246b7f1d31bccd62bdd1.png" src="_images/7b5c6fbf0a8b172e8e1a7b808a0a2c32f01d51988202246b7f1d31bccd62bdd1.png" />
 </div>
 </div>
 </section>
