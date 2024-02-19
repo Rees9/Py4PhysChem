@@ -247,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/Rees9/VIROSLAB" target="_blank"
+      <li><a href="https://github.com/Rees9/Py4PhysChem" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -264,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/Rees9/VIROSLAB/issues/new?title=Issue%20on%20page%20%2FImportingData.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/Rees9/Py4PhysChem/issues/new?title=Issue%20on%20page%20%2FImportingData.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -486,6 +486,7 @@ document.write(`
 <span class="c1"># Import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># define where our file can be found to be imported</span>
 <span class="n">filepath</span>        <span class="o">=</span> <span class="s1">&#39;data/CdSe_EmissionSpectra.txt&#39;</span>
@@ -503,8 +504,7 @@ document.write(`
                                  <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>       
 
 <span class="c1"># plot to try and look if data imported properly</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -600,6 +600,7 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">os</span> <span class="c1"># needed to use os.listdir()</span>
 
 <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/em_vs_laser/&#39;</span><span class="p">):</span> <span class="c1">#os.listdir() will return each file in a folder.</span>
@@ -616,14 +617,12 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span><span class="n">intensity</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;wavelength&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;intensity (a.u.)&#39;)
-</pre></div>
-</div>
+<img alt="_images/47c9853d60cf03a1fb15272b019896768b50b867879d94bd356b1a4ac77a970b.png" src="_images/47c9853d60cf03a1fb15272b019896768b50b867879d94bd356b1a4ac77a970b.png" />
 </div>
 </div>
 </section>
@@ -635,6 +634,7 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/em_vs_laser/&#39;</span><span class="p">):</span> <span class="c1">#os.listdir() will return each file in a folder.</span>
@@ -648,14 +648,12 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 <span class="c1"># add labels and legend</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;wavelength&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x21cbe20e108&gt;
-</pre></div>
-</div>
+<img alt="_images/6270c29a713dc350a4ae17856bb3d0394eb52906db9aa55d9396af9895d1f4c7.png" src="_images/6270c29a713dc350a4ae17856bb3d0394eb52906db9aa55d9396af9895d1f4c7.png" />
 </div>
 </div>
 </section>
@@ -682,6 +680,7 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/em_vs_laser/&#39;</span><span class="p">):</span> <span class="c1">#os.listdir() will return each file in a folder.</span>
@@ -696,21 +695,12 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;wavelength&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">legend</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Integration time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission spectra at different integration times (ms)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">3</span><span class="n">cc91fc37843</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">18</span> <span class="n">legend</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Integration time (ms)&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;legend&#39; is not defined
-</pre></div>
-</div>
+<img alt="_images/52a5eab86a9f53273de4d569d937b04bb915ab657d9b2072bed19a7ecaef964c.png" src="_images/52a5eab86a9f53273de4d569d937b04bb915ab657d9b2072bed19a7ecaef964c.png" />
 </div>
 </div>
 </section>
@@ -720,7 +710,7 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
     {
         requestKernel: true,
         binderOptions: {
-            repo: "Rees9/VIROSLAB",
+            repo: "Rees9/Py4PhysChem",
             ref: "master",
         },
         codeMirrorConfig: {

@@ -247,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/Rees9/VIROSLAB" target="_blank"
+      <li><a href="https://github.com/Rees9/Py4PhysChem" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -264,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/Rees9/VIROSLAB/issues/new?title=Issue%20on%20page%20%2Fplotting.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/Rees9/Py4PhysChem/issues/new?title=Issue%20on%20page%20%2Fplotting.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -468,8 +468,14 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline # Plot in the notebook
 
 <span class="n">time</span><span class="p">,</span> <span class="n">conc_aspirin</span><span class="p">,</span> <span class="n">conc_acid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;data/aspirin_data.txt&#39;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skip_header</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: unrecognized arguments: # Plot in the notebook
 </pre></div>
 </div>
 </div>
@@ -480,14 +486,12 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">conc_aspirin</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">conc_acid</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">conc_acid</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x24849d8bd88&gt;]
-</pre></div>
-</div>
+<img alt="_images/df1b5578690d9261e359e1f35b3a73915115e21e73caa65449bb46adafe57ca4.png" src="_images/df1b5578690d9261e359e1f35b3a73915115e21e73caa65449bb46adafe57ca4.png" />
 </div>
 </div>
 <p>Alternatively we can use <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code> to produce a scatterplot instead.</p>
@@ -495,14 +499,15 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">conc_aspirin</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">conc_acid</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">conc_acid</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x24849d71048&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1f225f4bca0&gt;
 </pre></div>
 </div>
+<img alt="_images/903a4d84d769126f534e329a99cb59fde04431020ee96385de329e3c5cc6218a.png" src="_images/903a4d84d769126f534e329a99cb59fde04431020ee96385de329e3c5cc6218a.png" />
 </div>
 </div>
 <p>And thats all we need to do to plot our data. In day to day research, generating plots like this done all the time to check work, especially post-processing. What’s great about matplotlib is it will often automatically generate limits, ranges, and tick positions of interest for us.</p>
@@ -522,13 +527,12 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="mf">0.006</span><span class="p">)</span>
 <span class="c1"># create legend</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/49c2e418729c1cad1ef1744213afe2f92fd0a576995d51fa70acebe699d12e75.png" src="_images/49c2e418729c1cad1ef1744213afe2f92fd0a576995d51fa70acebe699d12e75.png" />
+<img alt="_images/c9fc5df7a21ab44036875552a994c94ed330c5c913d2e1656bb970dcca64e017.png" src="_images/c9fc5df7a21ab44036875552a994c94ed330c5c913d2e1656bb970dcca64e017.png" />
 </div>
 </div>
 <p>Lastly we are also not restricted to line graphs, and there are countless options for visual elements to add/modify such as colors, linesizes, linestyles, etc. More thorough documentation can be found online <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">here on the official matplotlib documentation</a>, but as an example we can look at below:</p>
@@ -551,14 +555,12 @@ document.write(`
 <span class="c1"># set x and y axis limits</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 <span class="c1"># generate legend</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2484a1ad588&gt;
-</pre></div>
-</div>
+<img alt="_images/fa92a263cb40012ef03f9c3a7da094303b270726c9757641eb41125a429956c1.png" src="_images/fa92a263cb40012ef03f9c3a7da094303b270726c9757641eb41125a429956c1.png" />
 </div>
 </div>
 </section>
@@ -598,15 +600,13 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Aspirin&#39;</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.005</span><span class="p">),</span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.004</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Salicyclic Acid&#39;</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.0005</span><span class="p">),</span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.001</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 <span class="c1"># annotate the first data points after crossing over</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;More acid starting here&#39;</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mf">0.003</span><span class="p">),</span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mf">0.004</span><span class="p">),</span><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;More acid starting here&#39;</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mf">0.003</span><span class="p">),</span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mf">0.004</span><span class="p">),</span><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">));</span>
 <span class="c1"># arrow will point from text position xytext to data point xy by adding arrowprop part!</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(200, 0.004, &#39;More acid starting here&#39;)
-</pre></div>
-</div>
+<img alt="_images/edda2fca4e7487ff7a2de2fc2b622cc544204d1d63c3feee82f381ae98377b75.png" src="_images/edda2fca4e7487ff7a2de2fc2b622cc544204d1d63c3feee82f381ae98377b75.png" />
 </div>
 </div>
 <p>This is especially useful with defining regions in our graph, or also when used in tandem with automatically locating certain positions, extrema, or values in our data.</p>
@@ -634,14 +634,12 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 
 <span class="c1"># create legend</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2484a245e08&gt;
-</pre></div>
-</div>
+<img alt="_images/2b0aca5cd89f5e43fdf725600478b59d89719b04bfcf74512c9a7061beee24b7.png" src="_images/2b0aca5cd89f5e43fdf725600478b59d89719b04bfcf74512c9a7061beee24b7.png" />
 </div>
 </div>
 <p>Rather than taking the log of the data itself, this creates log-spaced tick marks on our plot which are much nicer to look at.</p>
@@ -667,14 +665,12 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># create legend</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2484a4dfd08&gt;
-</pre></div>
-</div>
+<img alt="_images/f70d1a3772171ffa8fc4f992d3f38383a2f9f536a4d495efabda138bae962530.png" src="_images/f70d1a3772171ffa8fc4f992d3f38383a2f9f536a4d495efabda138bae962530.png" />
 </div>
 </div>
 </section>
@@ -684,7 +680,7 @@ document.write(`
     {
         requestKernel: true,
         binderOptions: {
-            repo: "Rees9/VIROSLAB",
+            repo: "Rees9/Py4PhysChem",
             ref: "master",
         },
         codeMirrorConfig: {
