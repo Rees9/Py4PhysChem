@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Visualizing Data in Python &#8212; Python for Experimental Chemistry</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -61,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'plotting';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -75,7 +78,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -110,11 +121,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,9 +143,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -141,8 +157,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="Python for Experimental Chemistry - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Python for Experimental Chemistry - Home"/>`);</script>
   
   
 </a></div>
@@ -346,20 +362,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -398,17 +416,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-data-in-python">
 <h1>Visualizing Data in Python<a class="headerlink" href="#visualizing-data-in-python" title="Permalink to this heading">#</a></h1>
 <section id="plotting-in-python-matplotlib">
 <h2>Plotting in Python: matplotlib<a class="headerlink" href="#plotting-in-python-matplotlib" title="Permalink to this heading">#</a></h2>
-<p>We can import data and collect data, but we rarely if ever present data in tables as we do in plots, so let’s discuss basic plotting in Python with experimental data. For simplicity, we will assume we are starting with some nice, tabulated data in Python. Let’s look at the following data, which tracks reactants and product concentrations for the hydrolysis of aspirin. <a class="reference external" href="https://saylordotorg.github.io/text_general-chemistry-principles-patterns-and-applications-v1.0/s18-02-reaction-rates-and-rate-laws.html">Data obtained online from here</a></p>
+<p>We can collect and import data, but it is often much more enlightening to present our results in plots rather than tables, so let’s discuss basic plotting in Python with experimental data. For simplicity, that we will assume we are starting with some nice, tabulated data in Python (If not, see the sections Importing and the Manipulating data!)</p>
+<p>Specifically, let’s look at the following data, which tracks the concentrations of reactants and products during the hydrolysis of aspirin. <a class="reference external" href="https://saylordotorg.github.io/text_general-chemistry-principles-patterns-and-applications-v1.0/s18-02-reaction-rates-and-rate-laws.html">Data obtained online from here</a>. Speaking broadly, you can see that, over some hours, the concentration of aspirin (acetylsalicylic acid) is decreasing, and the concentration of the salicylic acid product is increasing.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="_images/hydrolysis_aspirin.jpg"><img alt="_images/hydrolysis_aspirin.jpg" src="_images/hydrolysis_aspirin.jpg" style="width: 600px;" /></a>
 </figure>
-<table class="table">
+<table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Time (h)</p></th>
 <th class="head"><p>[Aspirin] (M)</p></th>
@@ -462,7 +481,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>First, as always when coding, we start by importing our packages and we will import our data from the following file</p>
+<p>First, as always when coding, we start by importing our packages. Then, we will import our data from the <code class="docutils literal notranslate"><span class="pre">*.txt</span></code> file where it’s stored.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
@@ -481,7 +500,7 @@ document.write(`
 </div>
 </div>
 <p>Now what we imported before was matplotlib.pyplot and labelled it plt. Therefore, we can use all the built-in functionality of the package matplotlib.pyplot easily.</p>
-<p>First and foremost, we can call <strong>plt.plot(x_array,y_array)</strong> to do a quick and dirty plot. We can do this as many times as we want in a single cell to plot multiple arrays on a single graph</p>
+<p>First and foremost, we can simply call <code class="docutils literal notranslate"><span class="pre">plt.plot(x_array,y_array)</span></code> to do a quick plot. We can do this as many times as we want in a single cell to plot multiple arrays on a single graph. Here, we can plot the decreasing concentration of aspirin, and the increasing concentration of salicylic acid.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting data</span>
@@ -494,7 +513,7 @@ document.write(`
 <img alt="_images/df1b5578690d9261e359e1f35b3a73915115e21e73caa65449bb46adafe57ca4.png" src="_images/df1b5578690d9261e359e1f35b3a73915115e21e73caa65449bb46adafe57ca4.png" />
 </div>
 </div>
-<p>Alternatively we can use <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code> to produce a scatterplot instead.</p>
+<p>You’ll have noticed that the result was a line plot. This is most appropriate for a continuous function, such as a theoretical model. Usually, for discrete data, is it more appropriate to use a scatter plot. We can achieve this by calling <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code> instead:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting data</span>
@@ -510,8 +529,8 @@ document.write(`
 <img alt="_images/903a4d84d769126f534e329a99cb59fde04431020ee96385de329e3c5cc6218a.png" src="_images/903a4d84d769126f534e329a99cb59fde04431020ee96385de329e3c5cc6218a.png" />
 </div>
 </div>
-<p>And thats all we need to do to plot our data. In day to day research, generating plots like this done all the time to check work, especially post-processing. What’s great about matplotlib is it will often automatically generate limits, ranges, and tick positions of interest for us.</p>
-<p>Obviously though, we are missing many visual elements that do not communicate what our data is presenting well. we can add those as below by adding to the above code</p>
+<p>And thats all we need to do to plot our data! In day-to-day research, we generate quick plots like these <em>all the time</em> to inspect experimental results, and verify the results of steps in post-processing. What’s convenient about <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is that it, by default, can generate limits, ranges, and tick positions of interest for us automatically in these quick plots.</p>
+<p>Obviously though, we are missing many visual elements that could help us better communicate the meaning of our data. Titles, axes labels, legends, etc. can all play vital roles in telling our scientific story, and we can add those by adding additional lines to the simple code listed above. See below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot our data and label</span>
@@ -535,7 +554,8 @@ document.write(`
 <img alt="_images/c9fc5df7a21ab44036875552a994c94ed330c5c913d2e1656bb970dcca64e017.png" src="_images/c9fc5df7a21ab44036875552a994c94ed330c5c913d2e1656bb970dcca64e017.png" />
 </div>
 </div>
-<p>Lastly we are also not restricted to line graphs, and there are countless options for visual elements to add/modify such as colors, linesizes, linestyles, etc. More thorough documentation can be found online <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">here on the official matplotlib documentation</a>, but as an example we can look at below:</p>
+<p>You can now see how this more publication-quality plot contains some additional information that would give context to the average reader. The view presented could be tailored to highlight a partiuclar aspect, for instance the behaviour in the first 300h, as we show here. The adage ‘a picture is worth a thousand words’ is meaninful in science, it can be worth the time to think about how best to present some data to allow the reader to evaluate (and hopefully accept!) your particular hypothesis.
+Lastly we are also not restricted to line graphs, and there are countless options for visual elements to add/modify such as colors, linesizes, linestyles, etc. Very extensive instructions can be found online <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">in the official matplotlib documentation</a>. However, we’ll give a quick example to highlight some useful options:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting data, but with more options</span>
@@ -563,6 +583,7 @@ document.write(`
 <img alt="_images/fa92a263cb40012ef03f9c3a7da094303b270726c9757641eb41125a429956c1.png" src="_images/fa92a263cb40012ef03f9c3a7da094303b270726c9757641eb41125a429956c1.png" />
 </div>
 </div>
+<p>You can see that we’re able to e.g. change linestyles, colours, and markers, which can all help make relevant aspects clear and accessible to all readers.</p>
 </section>
 <section id="annotating-your-plot-plt-annotate">
 <h2>Annotating your plot: plt.annotate()<a class="headerlink" href="#annotating-your-plot-plt-annotate" title="Permalink to this heading">#</a></h2>
@@ -570,8 +591,8 @@ document.write(`
 <p class="admonition-title">For CHM223 students</p>
 <p>This subsection is relevant for your assignment!</p>
 </div>
-<p>Additionally, Python allows us to <em>programatically</em> annotate our plots. This means that we can use Python to automatically add text to our plots. This is useful if we want to add a label to a specific point on our plot, or if we want to add a label to a specific line on our plot. We can do this using the <code class="docutils literal notranslate"><span class="pre">plt.annotate()</span></code> function.</p>
-<p>This function takes three arguments: the text we want to add, the x-coordinate of the point we want to annotate, and the y-coordinate of the point we want to annotate. We can also specify the x and y coordinates of the text we want to add if we wish to offset it a bit, and draw an arrow even! It looks as follows</p>
+<p>Additionally, Python allows us to <em>programatically</em> annotate our plots—automatically add additional text that can help our reader. This is useful if we want to add a label to a specific point on our plot, or if we want to add a label to a specific line on our plot. We can do this using the <code class="docutils literal notranslate"><span class="pre">plt.annotate()</span></code> function.</p>
+<p>This function takes four arguments: the text (string) that we want to add, the co-ordinates (x,y) of the data point that we’re looking to draw attention to, and second (optional) set of co-ordinates (xtext,ytext) where we want text itself to be located—particularly if we want to offset it a bit (or just include extra information somewhere else in the plot!) and, lastly, the colour of the text. A nice additional feature is that we can instruct the program to draw an arrow from the text to the particular data point as emphasis! We include an example that uses all of these features below:</p>
 <p><code class="docutils literal notranslate"><span class="pre">plt.annotate('text</span> <span class="pre">goes</span> <span class="pre">here',xy=(xvalue,yvalue),xytext=(xfortext,yfortext),color='color')</span></code></p>
 <p>For example, if we want to label the point where the first data points where the concentrations cross over and add the text “more acid starting here” to the point (200,0.004) on our plot, we can do so using the following code:</p>
 <div class="cell docutils container">
@@ -609,11 +630,11 @@ document.write(`
 <img alt="_images/edda2fca4e7487ff7a2de2fc2b622cc544204d1d63c3feee82f381ae98377b75.png" src="_images/edda2fca4e7487ff7a2de2fc2b622cc544204d1d63c3feee82f381ae98377b75.png" />
 </div>
 </div>
-<p>This is especially useful with defining regions in our graph, or also when used in tandem with automatically locating certain positions, extrema, or values in our data.</p>
+<p>Remember that each of these ‘co-ordinates’ could also be calculated from the data, which can be especially useful to define regions in our graph after automatically locating certain positions, extrema, or values in our data. For example, here, we manually labelled the crossover point. However, if determining this for an unknown data set was particularly relevant, we could write code to find the first data point where <code class="docutils literal notranslate"><span class="pre">conc_acid</span> <span class="pre">&gt;</span> <span class="pre">conc_aspirin</span></code>, and then include a line to add text (e.g. “more acid starting here”) at that point on our plot.</p>
 </section>
 <section id="alternative-scale-plots-log-inverse-etc">
 <h2>Alternative scale plots: log, inverse, etc<a class="headerlink" href="#alternative-scale-plots-log-inverse-etc" title="Permalink to this heading">#</a></h2>
-<p>matplotlib has built in scalings based on how you would like to analyze your data. For instance, we typically check a few types of plots to determine the order of our reaction. For first order, we are interested in the logarithm of our concentration data. We can easily visualize this using the <code class="docutils literal notranslate"><span class="pre">plt.yscale()</span></code> command as follows:</p>
+<p>matplotlib has built-in axis scalings based on how you would like to present your data. For instance, you’ll recall from first year that we can determine a reaction order by generating a few types of plots with customized axes. For a first-order reaction, we are interested in the logarithm of our concentration data. We can easily change the vertical axis to a logaritmic scale using the <code class="docutils literal notranslate"><span class="pre">plt.yscale()</span></code> command as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot our data and label</span>
@@ -642,37 +663,8 @@ document.write(`
 <img alt="_images/2b0aca5cd89f5e43fdf725600478b59d89719b04bfcf74512c9a7061beee24b7.png" src="_images/2b0aca5cd89f5e43fdf725600478b59d89719b04bfcf74512c9a7061beee24b7.png" />
 </div>
 </div>
-<p>Rather than taking the log of the data itself, this creates log-spaced tick marks on our plot which are much nicer to look at.</p>
-<p>From this plot, we can see that the aspirin does appear to obey a first order rate law. The salicyclic acid data in this plot behaves strangely because of the starting point of zero concentration which doesn’t work properly on a log scale plot. Beyond that though, we see it does not appear linear, implying further dependence. This is true, as the salicyclic acid rate of production is also dependent on pH.</p>
-<p>Another option for plotting is in setting limits, we can reverse the order to go in descending order. This is frequently useful for presenting data from instruments which record from highest to lowest energy. In the example above, we could do this as follows</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot our data and label</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">conc_aspirin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Aspirin&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">conc_acid</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Salicyclic Acid&#39;</span><span class="p">)</span>
-
-<span class="c1"># label x and y axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (hr)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Concentration (M)&#39;</span><span class="p">)</span>
-
-<span class="c1"># create plot title</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Aspirin Hydrolysis in an Aqueous Solution at pH 7.0 and 37 C&#39;</span><span class="p">)</span>
-
-<span class="c1"># set x and y axis limits</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-
-<span class="c1"># reverse the x-axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># create legend</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/f70d1a3772171ffa8fc4f992d3f38383a2f9f536a4d495efabda138bae962530.png" src="_images/f70d1a3772171ffa8fc4f992d3f38383a2f9f536a4d495efabda138bae962530.png" />
-</div>
-</div>
+<p>Rather than taking the log of the underlying data, this simply changes the visualization, while creating log-spaced tick marks.</p>
+<p>From this plot, we can see that the linear (apparent) decrease in the aspirin concentration on a semi-log plot indicates that it’s hydrolysis obeys a first-order rate law. However, the salicyclic acid data in this plot appears to behaves strangely. This is because it, instead, starting from zero concentration before rising as <span class="math notranslate nohighlight">\(A(1-e^{-t / 	\tau})\)</span> so we’d need to think a bit harder to either manipulate the data, or generate custom plot axes to highlight this relationship. (We’ll leave aside for a moment any additional underlying dependencies in this reaction, for instance on pH!)</p>
 </section>
 </section>
 
@@ -701,11 +693,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="ManipulatingData.html"
@@ -725,10 +716,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -736,6 +724,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -767,6 +756,7 @@ By Rees Hughes, Mark Wilson
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -793,8 +783,8 @@ By Rees Hughes, Mark Wilson
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

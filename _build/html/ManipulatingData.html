@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Data Manipulation &amp; Analysis in Python &#8212; Python for Experimental Chemistry</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -77,7 +78,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -112,11 +121,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +143,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -143,8 +157,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="Python for Experimental Chemistry - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Python for Experimental Chemistry - Home"/>`);</script>
   
   
 </a></div>
@@ -348,20 +362,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -402,14 +418,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-manipulation-analysis-in-python">
 <h1>Data Manipulation &amp; Analysis in Python<a class="headerlink" href="#data-manipulation-analysis-in-python" title="Permalink to this heading">#</a></h1>
 <p>Now that we have imported data, often we want to use it to determine certain experimental observables. A peak wavelength from a UV/VIS spectra, a lifetime from concentration data, or chemical shift peaks in NMR. There are a multitude of ways to use this data to perform operations, and here we will just present a few.</p>
-<p>Let’s start with some NMR data of Ag<span class="math notranslate nohighlight">\(_2\)</span>ZnSnS<span class="math notranslate nohighlight">\(_4\)</span> (AZTS) nanocrystals (<a class="reference external" href="https://chemrxiv.org/engage/chemrxiv/article-details/63e465cb3067856f18bc31f3">Yarur, F. <em>et al.</em> (Wilson), <strong>2023.</strong> <em>ChemRxiv</em></a>) labelled <code class="docutils literal notranslate"><span class="pre">D1</span> <span class="pre">AZTS</span> <span class="pre">crude.csv</span></code>, using our template from the Importing Data section. Remember though, first we should always just <em>open up the data</em> to see what it looks like to figure out how to import it</p>
+<p>Let’s start with some NMR data of Ag<span class="math notranslate nohighlight">\(_2\)</span>ZnSnS<span class="math notranslate nohighlight">\(_4\)</span> (AZTS) nanocrystals (<a class="reference external" href="https://chemrxiv.org/engage/chemrxiv/article-details/63e465cb3067856f18bc31f3">Yarur, F. <em>et al.</em> (Wilson), <strong>2023.</strong> <em>ChemRxiv</em></a>) labelled <code class="docutils literal notranslate"><span class="pre">D1</span> <span class="pre">AZTS</span> <span class="pre">crude.csv</span></code>, using our template from the Importing Data section. Remember though, first we should always just <em>open up the data</em> to see what it looks like to figure out how to import it. Here, for comparison, we do this using Excel:</p>
 <p><img alt="image.png" src="_images/nmr_data.png" /></p>
-<p>What we can notice is that, despite being a .csv file, the data is not comma delimited. In fact, there’s just a space between each number. Now we know what parameters to pass to import properly!</p>
+<p>What we can notice is that, despite being a .csv file, the data is not comma delimited. In fact, there’s just a space between each number (which is why Excel struggles to import it correctly by default.) However, with this information, we now know what parameters to pass to import properly in Python! See below for code to do this, where we also include code so that the values in the arrays are ‘printed’ to the screen so that we can inspect them, and then generate a quick plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### IMPORT AND ROUGH PLOT DATA</span>
@@ -441,10 +457,10 @@ document.write(`
 signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cc82430f48&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x17e9ff540e0&gt;]
 </pre></div>
 </div>
-<img alt="_images/0858c9bd1bffe2c6efed6c93a2b2b432f6049b56d8fc199041136ea8a5addeb5.png" src="_images/0858c9bd1bffe2c6efed6c93a2b2b432f6049b56d8fc199041136ea8a5addeb5.png" />
+<img alt="_images/093b6adee2dd1539efabd8a82e81bab3e46e57ddbe1afb04961f50d42c51692c.png" src="_images/093b6adee2dd1539efabd8a82e81bab3e46e57ddbe1afb04961f50d42c51692c.png" />
 </div>
 </div>
 <p>Looks like an 1H NMR spectra—but, perhaps backwards!? This is because we did not include in the script any instructions to flip the x-axis left-to-right, which is the usual convention for 1H NMR spectra. We certainly could (and will below—as well as adding <em>e.g.</em> axis labels.) However, at this point we’re just aiming to see if our data import step worked correctly, and we wanted to make the broader point that it’s often wise to start with the simplest possible script to check that a critical step is working, and then build from there.</p>
@@ -454,13 +470,13 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 <p class="admonition-title">For CHM223 students</p>
 <p>This subsection is relevant for your assignment!</p>
 </div>
-<p>While we can modify the limits of our plots to highlight specific regions of interest, we also might frequently want to truncate our data itself. For instance, truncation could be helpful if the overall data set is large and unwieldy and we’re only interested in a sub-region, or if we’re trying to normalize our data to a local extremum instead of an outlier that isn’t physically relevant (due to instrumentational limits/flaws, data corruption, etc.)</p>
+<p>While we can modify the limits of our plots to highlight specific regions of interest, we also might frequently want to truncate our data itself. For instance, truncation could be helpful if the overall data set is large and unwieldy and we’re only interested in a sub-region, or if we’re trying to normalize our data to a local extremum instead of an outlier that isn’t physically relevant (due to multiple distinct signals, instrumentational limits/flaws, data corruption, etc.)</p>
 <p>Luckily, python has easy ways for us to modify our data accordingly using <strong>boolean logic</strong> (For a refresher, check out computational assignment 1.) Given an array of values, we can check each one against a condition, such as being smaller than a certain number. This will return an array of the same size that contains the boolean values of either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <p>Let’s use the NMR data above for example. Say we only care about data less than 10 ppm. We can check which values of our <code class="docutils literal notranslate"><span class="pre">ppm</span></code> (x-axis) array correspond to less than 10 ppm as follows:</p>
 <p><code class="docutils literal notranslate"><span class="pre">print(ppm</span> <span class="pre">&lt;</span> <span class="pre">10)</span></code></p>
 <p>which returns</p>
 <p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">True</span> <span class="pre">True</span> <span class="pre">True</span> <span class="pre">True</span> <span class="pre">True</span> <span class="pre">...</span>&#160; <span class="pre">False</span> <span class="pre">False</span> <span class="pre">False</span> <span class="pre">False</span> <span class="pre">False]</span></code></p>
-<p>This is useful because we can use this new array of boolean values to modify both of our original arrays, <code class="docutils literal notranslate"><span class="pre">ppm</span></code> (x-axis values) and <code class="docutils literal notranslate"><span class="pre">signal</span></code> (y values). This will keep those elements where the new boolean array has <code class="docutils literal notranslate"><span class="pre">true</span></code>, and discarding those where the condition returned <code class="docutils literal notranslate"><span class="pre">false</span></code>. We could then use these two, truncated arrays to generate another plot. See below:</p>
+<p>This is useful because we can use this new array of boolean values to modify both of our original arrays, <code class="docutils literal notranslate"><span class="pre">ppm</span></code> (x-axis values) and <code class="docutils literal notranslate"><span class="pre">signal</span></code> (y values). The code below generates new data arrays that are excerpted from the full data set, keeping those elements where the boolean array has <code class="docutils literal notranslate"><span class="pre">true</span></code>, and discarding those where the condition returned <code class="docutils literal notranslate"><span class="pre">false</span></code>. We could then use these two, truncated data arrays to generate another plot. See below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import data</span>
@@ -486,12 +502,14 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 <span class="c1"># modify plot appearance</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1">#add the legend</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span> <span class="c1"># This _flips_ the x-axis left-to-right, which is the usual convention for 1H NMR spectra.</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$\delta$ ppm&#39;</span><span class="p">)</span> <span class="c1">#label the x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">delta$ ppm&#39;</span><span class="p">)</span> <span class="c1">#label the x-axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (arb.)&#39;</span><span class="p">)</span> <span class="c1">#label the y-axis</span>
 
 <span class="c1"># If we want to, we can also do the same truncation operations for an array of data as above, but with a single line of code</span>
-<span class="c1"># the &amp; symbol (literally AND) allows us to use Boolean logic and consider multiple comparisons at once. The syntax requires that we put each nested comparison in parentheses. ()</span>
-<span class="c1"># This time, we&#39;ll also generate new arrays for the truncated dataset. We can avoid confusion by giving them obvious variable names.</span>
+<span class="c1"># the &amp; symbol (literally AND) allows us to use Boolean logic and consider multiple comparisons at once.</span>
+<span class="c1"># The syntax requires that we put each nested comparison in parentheses. ()</span>
+<span class="c1"># This time, we&#39;ll also generate new arrays for the truncated dataset.</span>
+<span class="c1"># We can avoid confusion by giving them obvious variable names.</span>
 <span class="n">ppm</span><span class="p">,</span> <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">skip_header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">truncsignal</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[(</span><span class="n">ppm</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ppm</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span> <span class="c1"># first, modify the y values to correspond to when the x values are less than 10 and greater than 0</span>
 <span class="n">truncppm</span> <span class="o">=</span> <span class="n">ppm</span><span class="p">[(</span><span class="n">ppm</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ppm</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span> <span class="c1"># then, modify the x values to correspond to when the x values are less than 10 and greater than 0</span>
@@ -499,7 +517,7 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/92cdb11887557908455bc3e1eaa4df0109d060d783bdb0c1ed1be98c31ea0e04.png" src="_images/92cdb11887557908455bc3e1eaa4df0109d060d783bdb0c1ed1be98c31ea0e04.png" />
+<img alt="_images/4f191438f51885de7f5390267b23c708859aec97c96370db21db454e90e6403e.png" src="_images/4f191438f51885de7f5390267b23c708859aec97c96370db21db454e90e6403e.png" />
 </div>
 </div>
 </section>
@@ -509,17 +527,17 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 <p class="admonition-title">For CHM223 students</p>
 <p>This subsection is relevant for your assignment!</p>
 </div>
-<p>scipy, like numpy or matplotlib, is another package for python that includes a large number of functions useful for science and data analysis. One of the many included is the function <code class="docutils literal notranslate"><span class="pre">find_peaks()</span></code>, which allows us to locate peaks in an array of values in order to determine their positions, not unlike in commercial FTIR software.</p>
+<p><a class="reference external" href="https://docs.scipy.org/doc/">scipy</a>, like <a class="reference external" href="https://docs.scipy.org/doc/">numpy</a> or <span class="xref myst">https://matplotlib.org/</span>, is another package for python that includes a large number of functions useful for science and data analysis. One of the many included is the function <code class="docutils literal notranslate"><span class="pre">find_peaks()</span></code>, which allows us to locate peaks in an array of values in order to determine their positions, not unlike in commercial FTIR software.</p>
 <p>The function is used as follows:</p>
 <p><code class="docutils literal notranslate"><span class="pre">peaks</span> <span class="pre">,</span> <span class="pre">_</span> <span class="pre">=</span> <span class="pre">scipy.find_peaks(data,</span> <span class="pre">height</span> <span class="pre">=</span> <span class="pre">x,</span> <span class="pre">width</span> <span class="pre">=</span> <span class="pre">y,</span> <span class="pre">prominence</span> <span class="pre">=</span> <span class="pre">z)</span></code></p>
-<p>where the newly created array, <code class="docutils literal notranslate"><span class="pre">peaks</span></code>, will contain all the positions (i.e. indices) at which peaks were found in the original <code class="docutils literal notranslate"><span class="pre">data</span></code> array. For example, a value of <code class="docutils literal notranslate"><span class="pre">34</span></code> in one element of the <code class="docutils literal notranslate"><span class="pre">peaks</span></code> array would imply that there is a peak located at <code class="docutils literal notranslate"><span class="pre">data[34]</span></code>. (For those interested, the underscore in <code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">_</span></code> just instructs the computer to throw away all the other things that function returns. We do this here because we’re not interested in this other information, but keep in mind that common functions in python have many more capabilities in general than we often need for any particular case!</p>
+<p>where the newly created array, <code class="docutils literal notranslate"><span class="pre">peaks</span></code>, will contain all the positions (i.e. indices) at which peaks were found in the original <code class="docutils literal notranslate"><span class="pre">data</span></code> array. For example, a value of <code class="docutils literal notranslate"><span class="pre">34</span></code> in one element of the <code class="docutils literal notranslate"><span class="pre">peaks</span></code> array would imply that there is a peak located at <code class="docutils literal notranslate"><span class="pre">data[34]</span></code>. (Note that Python uses square brackets to reference the elemtns in an array.)</p>
+<p>(For those interested, the underscore in <code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">_</span></code> just instructs the computer to throw away all the other things that function returns. We do this here because we’re not interested in this other information, but keep in mind that common functions in python have <em>many</em> more capabilities in general than we often need for any particular case!)</p>
 <p>There are a few important controls for this function, which we can pass to the function as arguments:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">height</span> <span class="pre">=</span></code> will specify a threshold for the minimum height of a peak. For instance, if we know the maximum level of our background signal, we can use this setting to avoid flagging incidental maxima that arise from a fluctuating background.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">=</span></code> will specify the expected width between neighbouring peaks, which can be useful in avoiding identifying multiple sub-peaks on the same overall feature if we expect our data to be separate by more than some number of array elements.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">prominence</span> <span class="pre">=</span></code> is a concept from topography is a bit more elusive to define, but is very useful becuase it can directly address (and exclude) shoulders or sub-peaks of a larger feature. In topography, the <em>prominence</em> of a peak is its elevation relative to the (highest) valley connecting it to a still-higher peak. Thus, when used in <code class="docutils literal notranslate"><span class="pre">find_peaks</span></code>, this parameter sets <em>the minimum prominence that a peak must have to be considered a unique peak</em> (rather than a shoulder of the larger peak). <strong>Often, tailored use of the prominence control alone is sufficient to cleanly identify peaks, so we don’t require any others.</strong> This is highlighted in the example below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">=</span></code> will specify the expected width between neighbouring peaks, which can be useful in avoiding identifying multiple sub-peaks on the same overall feature if we have an expectation that the peaks in our data will be separate by more than some number of array elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prominence</span> <span class="pre">=</span></code> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Topographic_prominence">concept from topography</a> that is a bit more elusive to define, but is very useful becuase it can directly address (and exclude) shoulders or sub-peaks of a larger feature. In topography, the <em>prominence</em> of a peak is its elevation relative to the (highest) valley connecting it to a still-higher peak. Thus, when used in <code class="docutils literal notranslate"><span class="pre">find_peaks</span></code>, this parameter sets <em>the minimum prominence that a peak must have to be considered a unique peak</em> (rather than a shoulder of the larger peak). <strong>Often, tailored use of the prominence control alone is sufficient to cleanly identify peaks,</strong> in which case we don’t need to worry about the other control parameters. This is highlighted in the example finding peaks in the NMR data that we imported, below:</p></li>
 </ul>
-<p>We can see an example of analyzing NMR data below</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
@@ -554,7 +572,7 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 
 <span class="c1"># Modify plot appearance</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># flip the x-axis left-to-right to adopt the conventional style for NMR plots</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$\delta$ ppm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">delta$ ppm&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (arb.)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;1H NMR of AZTS NCs crude&#39;</span><span class="p">)</span> <span class="c1"># change title to match sample name</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># show a legend with the labels we defined earlier</span>
@@ -567,16 +585,18 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
  6.9973  7.01516 7.06386 7.08245]
 </pre></div>
 </div>
-<img alt="_images/ab2de58e96b90a3b9cfd2ff9a621163feb18a6cfaca30b355c47f468f81bde71.png" src="_images/ab2de58e96b90a3b9cfd2ff9a621163feb18a6cfaca30b355c47f468f81bde71.png" />
+<img alt="_images/72902a9ac2d8a2ebee7015a005c4a04d7fc12de7e8863387c898faa5179ef1c1.png" src="_images/72902a9ac2d8a2ebee7015a005c4a04d7fc12de7e8863387c898faa5179ef1c1.png" />
 </div>
 </div>
+<p>You can see on the plot that <code class="docutils literal notranslate"><span class="pre">find_peaks</span></code> with the settings that we used cleanly identified the resonances in the NMR spectrum. The script stored these indices in the array variable <code class="docutils literal notranslate"><span class="pre">peaks</span></code>, so we could print out the locations (in ppm) by calling <code class="docutils literal notranslate"><span class="pre">ppm[peaks]</span></code>, just like referencing <code class="docutils literal notranslate"><span class="pre">data[34]</span></code> in the example above. If we needed the heights of the peaks (i.e. the y-values at each peak location), we could have referenced these as signal[peaks]. (Indeed, if you wanted a challenge, think about how you could use this kind of information to <em>integrate</em> these NMR peaks, Mestrenova-style!)</p>
 </section>
 <section id="background-subtraction">
 <h2>Background subtraction<a class="headerlink" href="#background-subtraction" title="Permalink to this heading">#</a></h2>
-<p>A very common correction you will need to do to experimental data is background subtraction. Some commercial software does this automatically, and only outputs the result. However other software/instruments first record a blank/background measurement, then record the data from your sample(s). This is often preferable in more-exploratory or demanding measurements, so that you can review the results of both measurment and perform the subtraction with care (either manually, or via a workflow.)</p>
-<p>Sometimes background subtraction can be as simple as subtracting a constant amount from all your data. Returning to our fluorescence spectra example from the Importing Data page (which you can also see in the plot below as the red ‘raw’ trace), we see that there is a flat, positive signal that persists outside of the range of wavelengths where we would expect photoluminescence (mainly, &lt;300 nm and &gt;900 nm. In practice this signal arises from read noise and detector dark counts, and so does not reflect <em>real</em> fluorescence.) To address this, we would determine what is the average value of this background—lets say we do this and call the result <code class="docutils literal notranslate"><span class="pre">bg</span></code>. Then, we could subtract <code class="docutils literal notranslate"><span class="pre">bg</span></code> from <em>every</em> element in our intensity array (because such a background would add to the signal <em>everywhere</em>, even in spectral regions where we did detect light!). We can subtract a constant from every element of an array using the following manipulation:</p>
-<p><code class="docutils literal notranslate"><span class="pre">intens</span> <span class="pre">=</span> <span class="pre">intens</span> <span class="pre">-</span> <span class="pre">bg</span></code></p>
-<p>All this does is take every element of the <code class="docutils literal notranslate"><span class="pre">array</span></code> we defined as <code class="docutils literal notranslate"><span class="pre">intensity</span></code>, and subtract the value <code class="docutils literal notranslate"><span class="pre">bg</span></code> from it (which could be a number, e.g. 1565.) As an example, lets do this with the data we imported in the <strong>Importing Data</strong> module</p>
+<p>A very common correction you will need to do to experimental data is background subtraction. Some commercial software does this automatically, and only outputs the final result. However other software/instruments first record a blank/background measurement, then take the data from your sample(s). This is often preferable in more-exploratory or demanding measurements, so that you can review the results of both measurements and perform the subtraction with care (either manually, or via a workflow of scripts.)</p>
+<p>Sometimes background subtraction can be as simple as subtracting a constant value from all your data. We return to our fluorescence spectra example from the Importing Data page, where the spectrum was stored in the <code class="docutils literal notranslate"><span class="pre">intensities</span></code> array. We’ve re-plotted this data below as the red ‘raw’ trace, and we observe that there is a flat, positive signal that persists well outside of the range of wavelengths where we would expect to see <em>real</em> photoluminescence (mainly, &lt;300 nm and &gt;900 nm. In practice this signal arises from detector read noise and dark counts, and so does <em>not</em> reflect real fluorescence.) To address this, we would determine the average value of this background—lets say we do this and call the result <code class="docutils literal notranslate"><span class="pre">bg</span></code>. Then, we could subtract the value <code class="docutils literal notranslate"><span class="pre">bg</span></code> from <em>every</em> element in our <code class="docutils literal notranslate"><span class="pre">intensities</span></code> array, because such a background would add to the signal <em>everywhere</em>, even in spectral regions where we did detect light! In terms of code, we can subtract a constant from every element of an array using the following manipulation:</p>
+<p><code class="docutils literal notranslate"><span class="pre">bkSubIntensities</span> <span class="pre">=</span> <span class="pre">intensities</span> <span class="pre">-</span> <span class="pre">bg</span></code></p>
+<p>All this does is take every element of the <code class="docutils literal notranslate"><span class="pre">intensities</span></code> array, and subtract the value <code class="docutils literal notranslate"><span class="pre">bg</span></code> from it (which could be a number, e.g. 1565.) We store the result in a new array, which we’ll call <code class="docutils literal notranslate"><span class="pre">bkSubIntensities</span></code> to avoid confusion.</p>
+<p>As an more-practical example, lets do this with the data we imported in the <strong>Importing Data</strong> module. Here we’ll estimate the level of the background by using the average value of the data for wavelengths &gt;900nm. See the code below, which also plots the background-subtracted datat that results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
@@ -607,15 +627,12 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (arb.)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Emission Spectra of CdSe Quantum Dots: Before/after normalization&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1cc93d4fec8&gt;
-</pre></div>
-</div>
-<img alt="_images/31851e2d900943d1ff4da29521a36d622020ee39ebba8971dc25250202bb347c.png" src="_images/31851e2d900943d1ff4da29521a36d622020ee39ebba8971dc25250202bb347c.png" />
+<img alt="_images/2f2052d020df1229756ec6da9f11b47ba8cc362bba9c4525aa9ff1df8bc6cd28.png" src="_images/2f2052d020df1229756ec6da9f11b47ba8cc362bba9c4525aa9ff1df8bc6cd28.png" />
 </div>
 </div>
 </section>
@@ -626,7 +643,7 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 <code class="docutils literal notranslate"><span class="pre">normIntensities</span> <span class="pre">=</span> <span class="pre">intensities/max(intensities)</span></code></p>
 <p>You can see how this works conceptually, the <code class="docutils literal notranslate"><span class="pre">max()</span></code> function returns the greatest value in the <code class="docutils literal notranslate"><span class="pre">intensities</span></code> array. We then divide (each element of) the array by this number, and store the result in <code class="docutils literal notranslate"><span class="pre">normIntensities</span></code>.</p>
 <p>However, often we will only be interested in determining a local maximum to normalize to. (For instance, if there are large signals elsewhere in the array that we’re not interested in, perhaps because they arise from a different physical process, or instrumental noise.) Here, we can utilize truncation as described above to cause the <code class="docutils literal notranslate"><span class="pre">max</span></code> function to look for a maximum in a specified range.</p>
-<p>To highlight this in action, let’s look at some <strong>UV-VIS absorption data</strong> and see the before and after plots.</p>
+<p>To highlight this in action, let’s look at some <strong>UV-VIS absorption data</strong> taken from some CdSe quantum dots. First lets, import and plot the raw data:.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
@@ -645,18 +662,17 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 
 <span class="c1"># plot raw data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;absorption data pre manipulation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Raw optical absorption data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Optical Density&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;absorption data pre manipulation&#39;)
-</pre></div>
-</div>
-<img alt="_images/1a1e9db938fe2cfd3acf3cf0996e086b4b69893901926cabede9d3aa80cdc6d9.png" src="_images/1a1e9db938fe2cfd3acf3cf0996e086b4b69893901926cabede9d3aa80cdc6d9.png" />
+<img alt="_images/1f310f673ab42b2618a61655a0826fadddf6fe7e65471fd774745d02c0889b62.png" src="_images/1f310f673ab42b2618a61655a0826fadddf6fe7e65471fd774745d02c0889b62.png" />
 </div>
 </div>
-<p>We can see from the figure above that the raw data is not incredibly useful, however with some simple manipulation we can make it much more fruitful. The instrument often has artifacts that we have to account for or exclude when analyzing data. Let’s see below what some simple manipulation can do!</p>
+<p>As it happens, the large apparent ‘cliff’ in this data around 300nm turns out to be an artifact of the UV-Vis spectrometer in the ANALEST facility that we used to make this measurement. By contrast, the scientifically-interesting part is the region from 500-600 nm, which is barely visible in this view! As a result, with some simple manipulation we can make this plot much more fruitful. Specifically, we’ll truncate the data to only show wavelengths greater than 450, then we’ll normalize the spectrum to the peak near 590 nm, which reflects the absorption to the <a class="reference external" href="https://doi.org/10.1021/ja00072a025">characteristic, lowest-energy excitonic peak</a> of these CdSe quantum dots:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
@@ -674,8 +690,8 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
                                  <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># first, truncate my data to 450 nm and beyond</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">450</span><span class="p">]</span> <span class="c1"># first, modify the y values to corruspond to when the x values are greater than 450</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">450</span><span class="p">]</span> <span class="c1"># then, modify the x values to corruspond to when the x values are greater than 450</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">450</span><span class="p">]</span> <span class="c1"># first, modify the y values to correspond to when the x values are greater than 450</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">450</span><span class="p">]</span> <span class="c1"># then, modify the x values to correspond to when the x values are greater than 450</span>
 
 <span class="c1"># next, locate the local maximum that I know is around 600 nm</span>
 <span class="n">local_y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">550</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">650</span><span class="p">)]</span> <span class="c1"># truncate y values to x values between 600 and 610</span>
@@ -691,7 +707,7 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 
 <span class="c1"># set plot labels and title</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Absorption (au, norm.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Absorption (norm.)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Absorption Spectrum of CdSe/ZnS core/shell Quantum Dots&#39;</span><span class="p">)</span>
 <span class="c1"># set x and y limits</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">450</span><span class="p">,</span><span class="mi">800</span><span class="p">)</span>
@@ -700,19 +716,19 @@ signal =  [-0.0377323 -0.0383906 -0.0410056 ...  0.0453818  0.0463226  0.0456263
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1493c70cc4a4a07bc0852d0ae4f4f4b2371c59a081ab9d9fc6cb91755652048e.png" src="_images/1493c70cc4a4a07bc0852d0ae4f4f4b2371c59a081ab9d9fc6cb91755652048e.png" />
+<img alt="_images/f3275e13eadff151a0bbdaf89a6af010aaaa25b35a6f151da14cce38a7a0a9ec.png" src="_images/f3275e13eadff151a0bbdaf89a6af010aaaa25b35a6f151da14cce38a7a0a9ec.png" />
 </div>
 </div>
-<p>This is especially useful when comparing distinct spectra, such as in the case where we need to import multiple files.</p>
+<p>You can see that the excitonic peak has been successfully normalized, as its peak intensity has been set to 1. Aside from an application like this, normalization can be especially useful when comparing the shape or peak-position of distinct spectra, such as when we’re tracking the shifting, or broadening of a peak through time.</p>
 </section>
 <section id="flipping-data">
 <h2>Flipping data<a class="headerlink" href="#flipping-data" title="Permalink to this heading">#</a></h2>
-<p>Sometimes, the order in which instruments record data is not necessarily how we want to plot it or analyze it. For example, let’s say we want to plot the emission by energy rather than wavelength. For reference, we can convert from wavelength of emission to energy in electronvolts by the following:</p>
+<p>Sometimes, the manner in which instruments record data is not necessarily the same as how we might want to analyze or plot it. For example, let’s say we want to plot the previous optical absorption (UV-Vis) spectrum by <em>photon energy</em> rather than wavelength. This might sound esoteric, but the lineshapes of many spectral features show their natural forms and symmetries when presented in energy, where they instead appear ‘skewed’ when plotted in wavelength. If we work out the underlying constants, we can convert from wavelength of emission to energy in electronvolts using the following relationship:</p>
 <div class="math notranslate nohighlight">
 \[
 E_{\lambda} = \frac{1239.8}{\lambda}  \text{ eV}
 \]</div>
-<p>So we can easily plot emission intensity versus energy as follows:</p>
+<p>As a result, we can convert the array of <em>wavelength</em> values (i.e. the x-axis) into a new x-axis of <em>photon energy</em> values, and then generate a new plot as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
@@ -744,16 +760,18 @@ E_{\lambda} = \frac{1239.8}{\lambda}  \text{ eV}
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Absorption Spectrum of CdSe/ZnS core/shell Quantum Dots&#39;</span><span class="p">)</span>
 
 <span class="c1"># set axis limits</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.6</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/112d6eb299fb7085d0fa46047e6a225de293084ddd92ee1dbaf9c7dd3190de28.png" src="_images/112d6eb299fb7085d0fa46047e6a225de293084ddd92ee1dbaf9c7dd3190de28.png" />
+<img alt="_images/b116100c4d695b619da576130b9b8ba789e381026ae085b80f8a60ff27405a61.png" src="_images/b116100c4d695b619da576130b9b8ba789e381026ae085b80f8a60ff27405a61.png" />
 </div>
 </div>
-<p>Generally we plot energy from highest to lowest, however by default <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> plots from lowest to highest values. This is common for many other plots, such as NMR plots which we will see later below. We can easily fix this by reversing the order of our axis limits to <code class="docutils literal notranslate"><span class="pre">plt.xlim(max,min)</span></code> rather than the typical min, max order. We can easily obtain the minimum and maximum values for our x-axis by calling <code class="docutils literal notranslate"><span class="pre">max(x)</span></code> and <code class="docutils literal notranslate"><span class="pre">min(x)</span></code> respectively, where <code class="docutils literal notranslate"><span class="pre">x</span></code> is whatever label we use for our x-data. See below for example</p>
+<p>You can see that the UV-Vis spectrum is now plotted vs photon energy (and, if you squint, some of the more-natural gaussian shape of the lowest-energy excitonic features comes through.) Success! This is all that’s required for a ‘unitless’ spectrum like obtical absorption.</p>
+<p>In case you find yourself trying to plot <em>emission</em> spectrum vs photon energy, keep in mind that there’s an <a class="reference external" href="https://doi.org/10.1021/jz401508t">additional correction required to the intensities</a>.</p>
+<p>Conventions vary between e.g. physics and chemistry, but it can be useful to ‘flip’ such a plot vs photon energy so that it runs ‘backwards’, i.e. from highest to lowest. However by default <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> plots from lowest to highest values. Such alternative conventions are common for many other plots, such as the NMR plots that we saw above. We can easily fix this by reversing the order of our axis limits to <code class="docutils literal notranslate"><span class="pre">plt.xlim(max,min)</span></code> rather than the typical min, max order. We can easily obtain the minimum and maximum values for our x-axis by calling <code class="docutils literal notranslate"><span class="pre">max(x)</span></code> and <code class="docutils literal notranslate"><span class="pre">min(x)</span></code> respectively, where <code class="docutils literal notranslate"><span class="pre">x</span></code> is whatever label we use for our x-data. See below for example</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot data</span>
@@ -773,10 +791,10 @@ E_{\lambda} = \frac{1239.8}{\lambda}  \text{ eV}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/10b73b0ca6782a6d115d5e4066f849a5361400d1fd18a51efbe483f614d8efc1.png" src="_images/10b73b0ca6782a6d115d5e4066f849a5361400d1fd18a51efbe483f614d8efc1.png" />
+<img alt="_images/fb547f211fc1698378a65a36ab0fcdf704b25c7a18dd75ddda4ef74dd42ab2cb.png" src="_images/fb547f211fc1698378a65a36ab0fcdf704b25c7a18dd75ddda4ef74dd42ab2cb.png" />
 </div>
 </div>
-<p>Additionally, We also may want to do this with our data arrays themselves. To do this, we can simply use <code class="docutils literal notranslate"><span class="pre">np.flip</span></code> as below on our UV-VIS data for example</p>
+<p>Lastly, we migh also want to do this with our data arrays themselves. To do this, we can simply use <code class="docutils literal notranslate"><span class="pre">np.flip</span></code> as below on our UV-VIS data for example</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original array:&#39;</span><span class="p">,</span><span class="n">ev</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
@@ -823,11 +841,10 @@ flipped array: [4.9592     4.93944223 4.91984127 4.90039526 4.88110236 4.8619607
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="ImportingData.html"
@@ -847,10 +864,7 @@ flipped array: [4.9592     4.93944223 4.91984127 4.90039526 4.88110236 4.8619607
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -858,6 +872,7 @@ flipped array: [4.9592     4.93944223 4.91984127 4.90039526 4.88110236 4.8619607
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -891,6 +906,7 @@ By Rees Hughes, Mark Wilson
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -917,8 +933,8 @@ By Rees Hughes, Mark Wilson
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Best Fits in Python &#8212; Python for Experimental Chemistry</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -77,7 +78,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -112,11 +121,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +143,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -143,8 +157,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="Python for Experimental Chemistry - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Python for Experimental Chemistry - Home"/>`);</script>
   
   
 </a></div>
@@ -348,20 +362,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -400,16 +416,16 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="best-fits-in-python">
 <h1>Best Fits in Python<a class="headerlink" href="#best-fits-in-python" title="Permalink to this heading">#</a></h1>
 <p>Here, we will discuss how we generate “trendlines” like in Excel, except here we will do so with much more flexiblity utilizing the powerful package known as <code class="docutils literal notranslate"><span class="pre">lmfit</span></code></p>
 <section id="linear-regressions">
 <h2>Linear regressions<a class="headerlink" href="#linear-regressions" title="Permalink to this heading">#</a></h2>
-<p>Linear regressions are extremely important to experimental chemistry. A lot of measurement devices will often return unitless values, signals, voltages, etc. through analog or digital outputs. It is then up to the experimentalist to be able to analyze that data, and calibrate it properly in order to obtain any physical significance of any individual measurement.</p>
-<p>We can have some unknown instrument response to a known quantity, such as concentration. Then, by varying the concentration and observing the change in signal, we can create a <strong>calibration curve</strong>. This is the basis of a lot of concentration-dependent investigations in chemistry. Additionally, you are probably already well aware of how linear best fits can allow us to determine the reaction rates of first-order rate laws.</p>
-<p>To start, let’s look at some of our previous data. In the “Manipulating Data” module, we imported and extracted data representing the peak emission intensity versus the integration time under laser excitation. Here, let’s use that data to obtain a calibration curve for our emission intensity.</p>
+<p>Regression analysis is extremely important to experimental chemistry. Many measurement devices will return unitless values, signals, voltages, etc. through analog or digital outputs. It is then up to the experimentalist to be able to analyze that data, and calibrate it properly in order to extract the physical significance of any individual measurement.</p>
+<p>Often, we might not initially know the quantitative relationship between the signal from the instrument and the physical quantity of interest, such as concentration. In this case, we can construct a <strong>calibration curve</strong>en, by varying the concentration in a known fasion and observing the resulting change in the observed signal. Calibration to known standards is the conceptual basis behind a host of experimental investigations in chemistry. Additionally, you are likely well-aware that linear best fits can allow us to determine the rate constants of first-order rate laws, so we will put this concept into practice here in Python.</p>
+<p>To start, let’s look at some of our previous data. In the “Manipulating Data” module, we imported and extracted data representing the peak emission intensity versus the integration time under laser excitation. Here, let’s use that data to obtain a calibration curve for our emission intensity. Specifically, we’ll extract the peak height from the data, and the integration time for the measurement from the filename, and plot these data as a scatter plot. just to see how it looks:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
@@ -418,7 +434,7 @@ document.write(`
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="c1"># import data</span>
+<span class="c1"># Import data</span>
 <span class="n">max_array</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">inttime_array</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/em_vs_laser/&#39;</span><span class="p">):</span> <span class="c1">#os.listdir() will return each file in a folder.</span>
@@ -426,14 +442,20 @@ document.write(`
     <span class="c1"># extract the integration time from the filename</span>
     <span class="k">if</span> <span class="s1">&#39;Integration&#39;</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">inttime_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">])</span> <span class="c1">#This extracts the integration time from the filename -- see the Importing Data section</span>
         <span class="c1"># truncate data to exclude possible laser peak</span>
         <span class="n">intensity</span> <span class="o">=</span> <span class="n">intensity</span><span class="p">[(</span><span class="n">wavelength</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">575</span><span class="p">]</span> <span class="c1"># only fetch max from 575 nm and above, as laser peak is at 532 nm</span>
         <span class="n">max_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">intensity</span><span class="p">))</span>
-<span class="n">inttime_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">2000</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">850</span><span class="p">]</span>
 
+<span class="c1"># Re-format data</span>
+<span class="n">inttime_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inttime_array</span><span class="p">)</span> <span class="c1">#Here, we cast the inttime_array (generated above) into a numpy array (rather than a generic &#39;list&#39;)</span>
+<span class="n">inttime_array</span> <span class="o">=</span> <span class="n">inttime_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="c1">#Here, we cast the elements of the array to (numerical) float values. Recall that the filename was a string, so python was considering each element as a list of characters up until this step.</span>
+<span class="n">max_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">max_array</span><span class="p">)</span> <span class="c1">#We similarly cast the list of maximum intensities to a numpy array</span>
+
+<span class="c1"># Plot data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inttime_array</span><span class="p">,</span><span class="n">max_array</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;integration time (ms) &#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;intensity (a.u.)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Integration time (ms) &#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Max Intensity (arb.)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Max intensity vs integration time&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -448,19 +470,33 @@ R101 532 ex 3.41 mW Integration 550CGLP 500 ms.txt
 R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 </pre></div>
 </div>
-<img alt="_images/cd4c67e97605813f985a8e88af9d36e3077436fd17c2f049090e896dd97fd6ea.png" src="_images/cd4c67e97605813f985a8e88af9d36e3077436fd17c2f049090e896dd97fd6ea.png" />
+<img alt="_images/672199a108acdcf510e9d0daf4b5cde9277731e03f7a2b8c746a6fc7b3050e53.png" src="_images/672199a108acdcf510e9d0daf4b5cde9277731e03f7a2b8c746a6fc7b3050e53.png" />
 </div>
 </div>
-<p>We will be using the <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> package, which we can import as follows</p>
+<p>By inspection, the data is relatively linear. However, we can perform a linear fit to examine this more closely and determine the best-fitting parameters.</p>
+<p>We will be using the <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> package, which we can import by running the two following blocks of code seperately.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is very important to run the following block code at least once to ensure that lmfit runs properly. Most online Jupyter services don’t have lmfit built in, so we need to install it properly before we can utilize it. The following command will install lmfit into the environment, and the %%capture command will prevent the output from being displayed in the notebook. Importantly, the command must be run in a separate cell from the import statement to run properly.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lmfit</span> <span class="kn">import</span> <span class="n">Model</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">lmfit</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now we know we can extract the rate constant by a linear best fit. Using <strong>lmfit</strong>, we can define the function we want to fit.</p>
-<p>For a linear equation (<span class="math notranslate nohighlight">\(y=mx + b\)</span>), we can define our equation as</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># then, we can simply import the package as normal.</span>
+<span class="kn">from</span> <span class="nn">lmfit</span> <span class="kn">import</span> <span class="n">Model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <strong>lmfit</strong>, we can define the function we want to fit.</p>
+<p>For a linear relation (<span class="math notranslate nohighlight">\(y=mx + b\)</span>), we can define our equation as</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">best_fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
@@ -505,8 +541,8 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 </div>
 </div>
 </div>
-<p>Here, we can see all the statistical measures of our fit. The fit statistics are good to investigate and reference to see how well the fit actually performed, but the important results are in the <strong>[[variables]]</strong> part.</p>
-<p>We can also plot our best fit to compare to our experimental data below</p>
+<p>Here, we can see all the statistical measures of our fit, which used to investigate and reference to see how well the fit actually performed. However, the parameters that give the best fit are presented in the <strong>[[variables]]</strong> part of the output. Speaking conceptually, we see that the y-intercept cannot be distinguished from zero, but the value of the slope is well-constrained.</p>
+<p>We can also plot our best fit to visually compare it to our experimental data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot out data on a logarithmic scale</span>
@@ -514,29 +550,46 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 <span class="c1"># plot our best fit</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">inttime_array</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">best_fit</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;best fit&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
 
-<span class="c1"># label our plot properly</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ln([conc])&#39;</span><span class="p">)</span>
+<span class="c1"># label our plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Integration time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (arb.))&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+
+<span class="c1"># additionally, we can extract our best fit parameters and their uncertainties as variables.</span>
+<span class="c1"># extract m variable and its uncertainty</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+<span class="n">m_err</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">stderr</span>
+<span class="c1"># extract b variable and its uncertainty</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+<span class="n">b_err</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">stderr</span>
+
+<span class="c1"># print out our best fit parameters and their uncertainties</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;m = </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">m_err</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">b_err</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/36631bd522a5f882efde308c7dfb1cbac3e60b3c0ec6f139d797496aa60e624c.png" src="_images/36631bd522a5f882efde308c7dfb1cbac3e60b3c0ec6f139d797496aa60e624c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = 29.13722446205522 +/- 0.6402782633722538
+b = 528.737569473824 +/- 593.5427357266836
+</pre></div>
+</div>
+<img alt="_images/0273eb6a89b292ff6431ffd43c1bb9b972d9bf620a0f30f664743910a37a2117.png" src="_images/0273eb6a89b292ff6431ffd43c1bb9b972d9bf620a0f30f664743910a37a2117.png" />
 </div>
 </div>
-<p>What we observe is a visually good fit, and we can further investigate how it varies with each data point by plotting the residuals themselves.</p>
+<p>What we observe is a qualitatively good fit, though it might be notable that the last data point is falling below the trend, which could herald a sub-linear response at large integration times. Further research could be required!</p>
+<p>Additionally, a powerful way to check the applicability of a fitting function is to calculate and plot the <em>residuals</em> for each data point—i.e. the degree to which each experimental value deviated from the value predicted by the best-fit model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the residuals</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inttime_array</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">residual</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;residuals&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;integration time (ms)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;residuals&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Integration time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals (arb.)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/70dbdd8593e4005770d9df055083ab825aebc7ea03427d5fbc3eeaa1351a5231.png" src="_images/70dbdd8593e4005770d9df055083ab825aebc7ea03427d5fbc3eeaa1351a5231.png" />
+<img alt="_images/9025f6a4e668f55d8516c9e34faa504eaef1295238adb1582860c7aa4bb10aaf.png" src="_images/9025f6a4e668f55d8516c9e34faa504eaef1295238adb1582860c7aa4bb10aaf.png" />
 </div>
 </div>
 <p>The residuals plot is very useful, as it allows us to see how good our fit is for various data points, and also tell us (much better than a r squared value!) how well our model actually fits our data. If a linear function correctly describes the relationship we are plotting, we expect the residuals to be randomly distributed. If there is some noticeable error, we will often see a pattern in our residuals. <a class="reference external" href="https://uoftchem-teaching.github.io/R4EnvChem/modelling-linear-regression.html#vizualizing-residuals">You can find some examples of such here on the R4EnvChem notebook</a></p>
@@ -547,15 +600,17 @@ R101 532 ex 3.41 mW Integration 550CGLP 850 ms.txt
 <p class="admonition-title">For CHM223 students</p>
 <p>This subsection is relevant for your assignment!</p>
 </div>
-<p>Linear regressions are useful, but we can usually do easily in Excel. The real advantage of python and more specifically <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> is it’s use in fitting to <strong>non-linear models</strong> which vary from a simple sloped line.</p>
+<p>Linear regressions are useful, but these are usually straightforward to do in Excel (or by hand!), so you might ask ‘what’s new’? An advantage of python, and more specifically <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> is that it can be used to fit to <strong>non-linear models</strong>, where the expected functional form varies from a simple linear relation.</p>
 <p>What do we mean by non-linear? Anything you could think of! Quadratic, exponential, power-law, gaussian, etc.
-To start, let’s look at the hydrolysis data we plotted earlier to see if we can extract some quantities related to the rate law. We know that if the rate law is first order, taking the logarithm of the concentration over time will give us a linear trend, which we can then use to find the corrusponding rate of reaction. However, with non-linear fitting, we can just simply fit the data directly to an exponential function instead!</p>
-<p>Remember, for a first order reaction, we expect the concentration over time to follow</p>
+To start, let’s look at the hydrolysis data we plotted earlier to see if we can extract some quantities related to the rate law. We know that if the rate law is first order, taking the logarithm of the concentration over time will give us a linear trend, which we can then use to find the corresponding rate of reaction. However, with non-linear fitting, we can just simply fit the data directly to an exponential function instead!</p>
+<p>Remember, for a first-order reaction, we expect the concentration over time to follow</p>
 <div class="math notranslate nohighlight">
 \[
 [\text{A}] = [\text{A}]_0 e^{-k t}
 \]</div>
-<p>Therefore, rather than taking the logarithm of our data, let’s simply fit it to an exponential function!</p>
+<p>Therefore, rather than taking the logarithm of our data, let’s simply fit it to a (decaying) exponential function!
+Conceptually/programmatically, this is very similar to the linear example above, but pay close attention to where we define our fitting function (cleverly called <code class="docutils literal notranslate"><span class="pre">function</span></code>.) Here, it is a decaying exponential, but this could be any algebraic function that you can write.
+We’ll also highlight that most fitting routines work much better if they are provided with a reasonable ‘guess’ of the fitting values. These can be done manually after you inspect the data, or generated programatically from the data. (For instance, a good ‘guess’ for the value of the <code class="docutils literal notranslate"><span class="pre">A</span></code> parameter would be the intensity of the data at the first timepoint.) Note that fitting with functions that only have a couple parameters tends to be fairly robust, so the specific value of your initial ‘guess’ often only needs to have the correct sign and order-of-magnitude and it will work well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
@@ -601,6 +656,18 @@ To start, let’s look at the hydrolysis data we plotted earlier to see if we ca
 <span class="c1"># plot our best fit</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">best_fit</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;best fit&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
 
+<span class="c1"># extract our best fit parameters and their uncertainties as variables.</span>
+<span class="c1"># extract k variable and its uncertainty</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+<span class="n">k_err</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">stderr</span>
+<span class="c1"># extract A variable and its uncertainty</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+<span class="n">A_err</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">stderr</span>
+<span class="c1"># print them</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;k = </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">k_err</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;A = </span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">A_err</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
 <span class="c1"># and create a plot of the residuals!</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> <span class="c1"># create a new figure</span>
 
@@ -629,19 +696,22 @@ To start, let’s look at the hydrolysis data we plotted earlier to see if we ca
     A:  0.00554737 +/- 2.7270e-06 (0.05%) (init = 0.005)
 [[Correlations]] (unreported correlations are &lt; 0.100)
     C(k, A) = +0.4661
+k = 0.003698763501916238 +/- 6.180134277651953e-06
+A = 0.00554736643573416 +/- 2.7270020061396285e-06
 </pre></div>
 </div>
-<img alt="_images/4b8e805eb9d21a0a4b92e11d56f5c0e89785c625c81bdcf5bddb00b6264d196e.png" src="_images/4b8e805eb9d21a0a4b92e11d56f5c0e89785c625c81bdcf5bddb00b6264d196e.png" />
-<img alt="_images/dccfe27c5b0ad9920168063e7d155454480982611c496e35c1529950e78be63a.png" src="_images/dccfe27c5b0ad9920168063e7d155454480982611c496e35c1529950e78be63a.png" />
+<img alt="_images/c3ae33fcb2fe4f6124825bb90f6b09951484cd2d7cdca80d3a39cecb40189e31.png" src="_images/c3ae33fcb2fe4f6124825bb90f6b09951484cd2d7cdca80d3a39cecb40189e31.png" />
+<img alt="_images/d4d95e334b71f6f56978cd419af47cd2cdebaab34ab3db652898a930349dd3fe.png" src="_images/d4d95e334b71f6f56978cd419af47cd2cdebaab34ab3db652898a930349dd3fe.png" />
 </div>
 </div>
-<p>What we are able to do is directly determine the initial concentration and the rate of reaction, without doing ANY calculations ourselves to transform a linear slope into the quantity we care about.</p>
-<p>Non-linear fitting is extremely powerful, because the possibilities for a choice of model function are endless. We’ve only shown one simpler example here, but you can use any functional form to fit any data that you need. <a class="reference external" href="https://github.com/wholden/jupyter-lmfit">Check out this page for an interactive module utilizing lmfit with robust function selection</a>, or the <a class="reference external" href="https://lmfit.github.io/lmfit-py/builtin_models.html">source documentation outlining examples of built in functional forms you can use</a></p>
+<p>Success! By inspection, it looks like our data is very well captured by a decaying exponential, and the expontial time-constant (<span class="math notranslate nohighlight">\(	au=1/k\)</span>) rate-constant is about 270 hours, which looks reasonable by inspection.</p>
+<p>Thus, we’ve been able to directly determine the initial concentration and the rate constant, without needing to do ANY preliminary transformations to the data. Now, in this simple example, either a non-linear regression directly on the data, or a linear regression on the logarithm of the data will be similarly effective. However, the two methods have differeing strengths and weaknesses, so they can be used complementarily.</p>
+<p>Non-linear fitting is extremely powerful, because the possibilities for model functions are endless. We’ve only shown one simpler example here, but you can use any functional form to fit any data that you need. <a class="reference external" href="https://github.com/wholden/jupyter-lmfit">Check out this page for an interactive module utilizing lmfit with robust function selection</a>, or the <a class="reference external" href="https://lmfit.github.io/lmfit-py/builtin_models.html">source documentation outlining examples of built in functional forms you can use</a></p>
 </section>
 <section id="the-reality-of-non-linear-fits-models-and-data">
 <h2>The reality of non-linear fits: Models and Data<a class="headerlink" href="#the-reality-of-non-linear-fits-models-and-data" title="Permalink to this heading">#</a></h2>
-<p>It is important to acknowledge that when it comes to non-linear fits, it is very easy to find a great looking fit to your data when what you’re looking for is a functional form. On the other hand, a best fit is a model and just that; a model function which happens to line up with the trends in your data. But what’s important to know is that it is meaningless unless there is physical, or proveable signifiance in the functional form and the coefficients. Any data you ever have will almost always fit well if you just keep adding polynomial terms. But what is significant is where those terms come from, and how we can motivate them through expected behaviour, either from theory or experiment.</p>
-<p>For example, Quantum Dots are semiconducting nanocrystals a few nanometers in diameter that have size-tuneable absorption energies/wavelengths due to quantum confinement. We can vary the size of these nanoparticles then to achieve particles which absorb wavelengths across the visible spectrum of. This trend would be useful to know and be able to predict, and Yu et al showed that you could do this in 2003.</p>
+<p>It is important to acknowledge that when it comes to non-linear fits, it is very (dangerously?) easy to find a functional that gives a ‘great-looking’ fit to your data for some set of best-fit parameters. However, without further analysis, this is only a parametization of your experimental data—a mathematical function which happens to line up with the trends in your dataset. This is because regression analysis by itself only tells you the best-fit values of the parameters, given the functional form of the model that you used.  It is up to you as a scientist to determine whether the particular mathematical relationship has physical significance—a strong test of which is whether the function does well when extrapolated outside of the existing range. This usually needs a meaningful interplay of theory and experiments to justify the signifiance of a particular functional form and the coefficients.</p>
+<p>For example, quantum dots are semiconducting nanocrystals a few nanometers in diameter that have size-tuneable absorption energies/wavelengths due to quantum confinement. In other words, if we tune our syntheses to make quantum dots from the same material but of a different (average) size, their excitonic absorption peack can be tuned across the visible spectrum. This relationship is useful to know, so that we could infer the physical size of a sample from its optical absorption peak. Indeed, researchers (Yu and co-workers) performed many syntheses, mesaured sizes by TEM, took spectra, and generated best-fit polynomial equations for nanocrystals in the cadmium chalchogenide family in a paper published in 2003.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/yu_QD_sizecurve.png"><img alt="_images/yu_QD_sizecurve.png" src="_images/yu_QD_sizecurve.png" style="width: 600px;" /></a>
 <figcaption>
@@ -654,11 +724,11 @@ To start, let’s look at the hydrolysis data we plotted earlier to see if we ca
 <p><span class="caption-number">Fig. 3 </span><span class="caption-text">Adapted from Yu, W. et al (2003). Experimental determination of the extinction coefficient of CdTe, CdSe, and CdS nanocrystals. Chemistry of materials, 15(14), 2854-2860.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This is useful, as it allows us to predict the size from the absorption spectra alone and vice versa. But, there is an important paragraph from Yu et al. just below these equations in the source material</p>
+<p>This parametrization is a useful, as (within this range) it allows us to estimate the size of the quantum dots from their absorption spectra alone and vice versa. But, the authors include a very important paragraph, just below these equations in the source material</p>
 <blockquote>
 <div><p>“<em>In the above equations, D (nm) is the size of a given nanocrystal sample, and λ (nm) is the wavelength of the first  excitonic  absorption  peak  of  the  corresponding sample. <strong>It  must  be  pointed  out  that  the  functions provided above are only polynomial fitting functions of the experimental data, which may become invalid in the size ranges not covered by the data shown in Figure 2.</strong></em>”</p>
 </div></blockquote>
-<p>While the fit function does a good job of tracking a trend through the data that is input, all it shows is just that; there is a trend in <em>this specific range of data.</em> For larger or smaller sizes, there is no feasible way to predict what would happen to the absorption peaks from this data alone. Furthermore, <strong>there is absolutely nothing physical about the equations above</strong>. There is no theory or experimental evidence involved that would imply that this is <em>the</em> functional form that best describes the size evolution of quantum dots. What it does provide is a useful tool, and it’s important to remember the limits of the usefulness in fitting data.</p>
+<p>While the fit function does a good job of tracking a trend through the data that is input, all it shows is just that—there is a trend in <em>this specific range of data.</em> For larger or smaller sizes, there is no guarantee that the ‘model’ will continue to work—indeed, polynomial fits often fail spectacularly when extrapolating. This is because <strong>there is absolutely nothing ‘physical’ about the equations above</strong>—no underlying theoretical model that implies that this is <em>the</em> functional form that best describes the size evolution of quantum dots. (And, indeed, one could do quite well with a particle-in-a-sphere!) Accordingly, though this best fit does provide a useful tool, it’s important to remember the limits in generalizing from empirical fits to data.</p>
 </section>
 </section>
 
@@ -687,11 +757,10 @@ To start, let’s look at the hydrolysis data we plotted earlier to see if we ca
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="plotting.html"
@@ -711,10 +780,7 @@ To start, let’s look at the hydrolysis data we plotted earlier to see if we ca
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -722,6 +788,7 @@ To start, let’s look at the hydrolysis data we plotted earlier to see if we ca
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -753,6 +820,7 @@ By Rees Hughes, Mark Wilson
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -779,8 +847,8 @@ By Rees Hughes, Mark Wilson
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
