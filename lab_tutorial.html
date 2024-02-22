@@ -406,10 +406,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1 Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-vibrations-and-rotation-of-a-diatomic-molecule">2 Theory: Vibrations and rotation of a diatomic molecule</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">2.1 Selection rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-spectrum-structure">2.2 IR spectrum structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-of-the-ir-spectrum">2.2 Structure of the IR spectrum</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-analysis">3 Spectrum Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-spectrum-analysis">3 Practical Spectrum Analysis</a></li>
 </ul>
             </nav>
         </div>
@@ -428,11 +428,11 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/em_wave.png"><img alt="_images/em_wave.png" src="_images/em_wave.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Electromagnetic wave. Variable electric E and magnetic B fields are orthogonal to each other and to the direction k of propagation. lambda is the wavelength.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Vizualization of an electromagnetic (plane) wave. Variable electric <span class="math notranslate nohighlight">\(\vec{E}\)</span> and magnetic <span class="math notranslate nohighlight">\(\vec{B}\)</span> fields are orthogonal to each other and to the direction <span class="math notranslate nohighlight">\(\vec{k}\)</span> of propagation. <span class="math notranslate nohighlight">\(\lambda\)</span> is the wavelength.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Spectroscopy is the study of the interaction between matter and electromagnetic waves. Historically, spectroscopy dealt with the electromagnetic radiation in a form of visible light, but it has gradually developed to cover the whole electromagnetic spectrum: from the short-wavelength <span class="math notranslate nohighlight">\(\gamma\)</span>- and X-ray radiation through ultraviolet, visible, and infrared light down to the microwave radiation. In this project we are using the infrared (IR) light to study particular types of motion of molecules: vibrations and rotations.</p>
-<p>What are the merits of the vibrational and rotational spectroscopy? It allows us to infer the geometric structure of a molecule from its absorption spectrum. HCl (shown in Fig. 2) is a polar molecule: atoms carry partial positive +q and negative −q charges. These charges interact with the electric field <span class="math notranslate nohighlight">\(\vec{E}\)</span> of an electromagnetic wave and feel the force. As a result, the molecule starts to spin about its center of mass and also to vibrate as the distance between atoms changes when the charges move in opposite directions following the time-varying electric field. Both phenomena take place simultaneously, which explains why we are dealing with a composite rotational-vibrational spectrum. Vibrations and rotation are not mechanically independent: A rotating molecule experiences the centrifugal force that tries to stretch the molecule and thus vibrations are affected. Vibrations periodically shrink and stretch the molecule, changing the average distance between atoms and affecting spinning. Just like a spinning ice-skater as she pulls her arms closer to her body she spins faster (see Atkins, Chpt. 16), so does the molecule when the bond length decreases.</p>
+<p>Spectroscopy is the measurement and interpretation of electromagnetic spectra, which offers a powerful toolkit to study the interactions between matter and electromagnetic waves. Historically, spectroscopy begain with studies of electromagnetic radiation in the form of visible light—one could say that our eyes were the first (coarse) spectrometers used for science. However, technological capabilities have gradually developed to cover the whole electromagnetic spectrum: from short-wavelength/high-energy <span class="math notranslate nohighlight">\(\gamma\)</span>- and X-ray radiation through ultraviolet, visible, and infrared light, and our to micro- and radio waves. In this virtual lab, we are using infrared (IR) light (with wavelengths <span class="math notranslate nohighlight">\(\lambda\)</span>: 800~nm–1000<span class="math notranslate nohighlight">\(\mu\)</span>m) to study particular types of molecular motion: vibrations and rotations.</p>
+<p>Why might we be interested in vibrational and rotational spectroscopy? These techniques allow us to infer the geometric structure of a molecule from its (infrared) absorption spectrum. HCl (shown in Fig. 2) is a highly polar molecule: its atoms carry partial positive +<span class="math notranslate nohighlight">\(q\)</span> and negative −<span class="math notranslate nohighlight">\(q\)</span> charges. These charges interact with the electric field <span class="math notranslate nohighlight">\(\vec{E}\)</span> of an electromagnetic wave and feel a (time-varying) force. As a result, the molecule starts to spin (about its center of mass) <em>and</em> vibrate—where the inter-atomic distance changes when the charges are pushed <em>in opposite directions</em> by the electric field. Both phenomena take place simultaneously, which explains why we are dealing with a composite rotational-vibrational spectrum. Further, vibrations and rotation are not mechanically independent: A the atoms in rotating molecule experience a centrifugal force that stretches the bond, moves the molecule from the natural equilibrium in its inter-atomic potential, and thus perturbs the vibrations. Conversely, vibrations periodically shrink and stretch the bond, changing the distance between atoms and affecting the time-averaged <em>moment of interia</em>. This in turn pertubs the molecular rotation—just like <a class="reference external" href="https://phys.libretexts.org/Courses/Georgia_State_University/GSU-TM-Physics_I_(2211)/08%3A_Mass_and_Inertia/8.08%3A_Moment_of_Inertia_Rotational_Inertia">an ice-skater pulling their arms closer to their body to speed up their spin.</a></p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/hcl.png"><img alt="_images/hcl.png" src="_images/hcl.png" style="width: 200px;" /></a>
 <figcaption>
@@ -441,70 +441,66 @@ document.write(`
 </figure>
 <div class="math notranslate nohighlight">
 \[\vec{F} = \pm q \vec{E}\]</div>
-<p>For a diatomic molecule like HCl, <strong>we shall determine the <em>vibrational frequency, <span class="math notranslate nohighlight">\(\nu_e\)</span>, the rotational constant, <span class="math notranslate nohighlight">\(B_e\)</span>, and the vibrational correction term, <span class="math notranslate nohighlight">\(\alpha_e\)</span>.</em></strong> We can then calculate the equilibrium distance <span class="math notranslate nohighlight">\(R_e\)</span> (H–Cl bond length) and the bond force constant <span class="math notranslate nohighlight">\(k\)</span>, which characterizes the strength of the H–Cl chemical bond.</p>
+<p>For a diatomic molecule like HCl, <strong>we can determine the fundamental <em>vibrational frequency</em>, <span class="math notranslate nohighlight">\(\nu_e\)</span>, the <em>rotational constant</em>, <span class="math notranslate nohighlight">\(B_e\)</span>, and the <em>vibrational correction term</em>, <span class="math notranslate nohighlight">\(\alpha_e\)</span>.</strong>* We can then calculate the <em>equilibrium distance</em> <span class="math notranslate nohighlight">\(d_e\)</span> (H–Cl bond length) and the <em>force constant</em>, <span class="math notranslate nohighlight">\(k\)</span>, that characterizes the strength of the H–Cl chemical bond.</p>
 </section>
 <section id="theory-vibrations-and-rotation-of-a-diatomic-molecule">
 <h2>2 Theory: Vibrations and rotation of a diatomic molecule<a class="headerlink" href="#theory-vibrations-and-rotation-of-a-diatomic-molecule" title="Permalink to this heading">#</a></h2>
-<p>The description of Sec. 1 is based on ideas from the classical chemical structure theory, which assumes the existence of chemical bonds of certain rigidity, partial atomic charges, etc. Quantitative description of molecular systems, however, is given by the laws of quantum mechanics. The solution of the Schrödinger equation provides the rotational-vibrational energy levels <span class="math notranslate nohighlight">\(E_{rv}\)</span> which depend on the vibrational quantum number v = 0, 1, 2, … and the rotational quantum number <span class="math notranslate nohighlight">\(J = 0, 1, 2, ...\)</span>,</p>
+<p>The description of Sec. 1 is based on ideas from the <em>classical</em> chemical structure theory, which assumes the existence of chemical bonds of certain rigidity, partial atomic charges, etc. A more-accurate description of molecular systems, however, is given by the laws of quantum mechanics. Here, we adopt a perturbative treatment, where the (approximate) solutions of the Schrödinger equation provide the rotational-vibrational energy levels <span class="math notranslate nohighlight">\(E_{rv}\)</span> which depend on <em>both</em> the vibrational quantum number <span class="math notranslate nohighlight">\(v = 0, 1, 2, \ldots\)</span> and the rotational quantum number <span class="math notranslate nohighlight">\(J = 0, 1, 2, \ldots\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-E_{rv}(v, J) = hB_eJ(J + 1) + h\nu_e
+E_{rv}(v, J) = B_eJ(J + 1) + h\nu_e
 \left(
 v + \frac{1}{2}
 \right)
 \tag{1}
 \]</div>
-<p>See Eqs. 17.76 and Eq. 17.81 in the Book of Levine. Here,</p>
+<p>(See equations 1 and 2 in the <a class="reference external" href="https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Spectroscopy/Rotational_Spectroscopy/Rovibrational_Spectroscopy">supplementary module on ro-vibrational spectroscopy in the Libretext</a>). Here,</p>
 <div class="math notranslate nohighlight">
 \[
-B_e = \frac{h}{
-8\pi^2 \mu R_e^2} \quad
-\text{and} \quad \nu_e = \frac{1}{2\pi}
-\sqrt{\frac{k}{\mu}}
+B_e = \frac{h^2}{8\pi^2 \mu (d_e)^2} \quad
+\text{and} \quad \nu_e = \frac{1}{2\pi}\omega_e = \frac{1}{2\pi}\sqrt{\frac{k_e}{\mu}}
 \tag{2}
 \]</div>
-<p>are the equilibrium rotational constant and harmonic frequency, respectively. Other parameters are the
-bond force constant k and the reduced mass</p>
+<p>are the equilibrium rotational constant (in SI units) and the harmonic frequency, respectively. Note that <span class="math notranslate nohighlight">\(B=\tilde{B}hc_0\)</span>, where <span class="math notranslate nohighlight">\(\tilde{B}\)</span> is the rotational constant expressed in <a class="reference external" href="https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Physical_Chemistry_(LibreTexts)/05%3A_The_Harmonic_Oscillator_and_the_Rigid_Rotor/5.09%3A_The_Rigid_Rotator_is_a_Model_for_a_Rotating_Diatomic_Molecule"><em>wavenumbers</em></a>. Other parameters are the <em>equilibrium</em> bond length, <span class="math notranslate nohighlight">\(d_e\)</span>, the bond force constant (at the equilibrium position), <span class="math notranslate nohighlight">\(k_e\)</span>, and the reduced mass, which for HCl would be:</p>
 <div class="math notranslate nohighlight">
 \[
-\mu = \frac{M_H M_{Cl}}
-{M_H + M_{Cl}}
+\mu = \frac{m_H m_{Cl}}
+{m_H + m_{Cl}}
 \tag{3}
 \]</div>
-<p>As follows from Eq. (1), rotational-vibrational energies of a diatomic molecule are quantized : only
-certain discrete levels are allowed by quantum mechanics. These levels are not directly observable though;
-in any sort of experiment we can only see the transitions between them, which results in absorption or
-emission of energy leading, correspondingly, to either absorption or emission spectra</p>
+<p>As follows from Eq. (1), rotational-vibrational energies of a diatomic molecule are <em>quantized</em>: only certain, discrete levels are allowed by quantum mechanics. These levels are not directly observable, though—in spectroscopic experiments we generally infer their energies by looking at transitions <em>between</em> levels. In infrared spectroscopy, we are considering transitions that lead to either the absorption or emission of a photon, and thus our experiments will concern absorption or emission spectra.</p>
 <section id="selection-rules">
 <h3>2.1 Selection rules<a class="headerlink" href="#selection-rules" title="Permalink to this heading">#</a></h3>
+<p>If all possible transitions between vibrational and rotational energy levels were allowed, a hypothetical spectrum would be quite cluttered in the infrared. However, only a small sub-set of the conceivable trainsitions are usually visible in experimental spectra. These few, <em>allowed</em> transitions are determined by the physical mechanism of interaction between radiation and matter—as was mentioned in Sec. 1, in the general case a diatomic molecule must have a transition dipole (which is the quantum mechanical analog to polar molecules that are classically vibrating or rotating) to exhibit features in an infrared rotational-vibrational spectrum. Quantum mechanically, we can represent this as a matrix element involving the dipole operator, and use the wavefunctions of the quantum harmonic oscillator or rigid rotor to arrive at the <em>selection rules</em> for transitions for a diatomic molecule. In terms of its quantum numbers, these rules imply that the only allowed transitions are those where both quantum numbers change by exactly one:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta v = \pm 1, \Delta J = ±1. \tag{4}
+\]</div>
+<p>Allowed transitions are conveniently represented on the energy diagram, Fig. 3.</p>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/selection_rules.png"><img alt="_images/selection_rules.png" src="_images/selection_rules.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">Energy level diagram and allowed transitions in a rotational-vibrational spectrum of a diatomic molecule. The spacing between vibrational levels (∆v = 1) is large compared to those between rotational ones (∆J = ±1).</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>If all possible transitions between energy levels were allowed, a hypothetical spectrum would be quite cluttered. Fortunately, only certain transitions are visible in a spectrum. Allowed transitions are determined by the physical mechanism of interaction between radiation and matter; as was mentioned in Sec. 1, a diatomic molecule has to be polar to show an IR absorption rotational-vibrational spectrum. In terms of its quantum numbers, selection rules of the IR spectrum of a diatomic molecule are</p>
-<div class="math notranslate nohighlight">
-\[
-\Delta v = \pm 1, \Delta J = ±1. \tag{4}
-\]</div>
-<p>Allowed transitions are conveniently represented on the energy diagram, Fig. 3. At room temperature, the energy spacing between vibrational levels of HCl is large compared to the characteristic thermal energy, and the majority of molecules are at their ground vibration level, so that the absorption spectrum corresponds to a ∆v = +1 transition (from the ground vibrational level to the ﬁrst excited state).</p>
+<p>Then, at room temperature, the energy spacing between vibrational levels of HCl is large compared to the characteristic thermal energy, so the overwhelming majority of molecules will be in their ground vibration level prior to exposure to light. As a result the absorption spectrum corresponds to a ∆v = +1 transition (specifically, from <span class="math notranslate nohighlight">\(v=0\)</span>, the ground vibrational level to <span class="math notranslate nohighlight">\(v=1\)</span>, the ﬁrst excited state). However, the spacing between the rotational energy levels <em>is</em> comparable to the characteristic thermal energy at room temperature, so a variety of staties (<em>i.e.</em> values of <span class="math notranslate nohighlight">\(J\)</span>) will be initially occupied, and we will observe transitions where the final rotational state is either one greater (<span class="math notranslate nohighlight">\(J_{final}=J_{initial}+1\)</span>), or one less (<span class="math notranslate nohighlight">\(J_{final}=J_{initial}-1\)</span>) than whichever state a particular molecule occupied prior to photoexcitation. Putting this all together, we have a theoretical model for the experimental spectra, which, for HCl, has an appearance siilar to this:</p>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="_images/ftir_spectra_labels.png"><img alt="_images/ftir_spectra_labels.png" src="_images/ftir_spectra_labels.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">Rotational-vibrational infrared spectrum of HCl. Note the absence of a Q branch, which would have been located in between P and R branches but is forbidden by selection rules.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>By convention, a series of transitions for which ∆J = −1 is called a P branch, and a series of lines for which ∆J = +1 is called an R branch. An R branch transition originating in state J and terminating in state (J + 1) is written as R(J), and a P branch transition originating in state J and terminating in state (J − 1) is written as P (J). Q branch, in which ∆J = 0 can occur in some cases, but not in the rotational-vibrational spectra of diatomic molecules, so we will ignore them.</p>
+<p>By convention, the series of transitions for which ∆J = −1 is called the P branch, and the series of features for which ∆J = +1 is called the R branch. An R-branch transition originating in state <span class="math notranslate nohighlight">\(J\)</span> and terminating in state <span class="math notranslate nohighlight">\((J + 1)\)</span> is written as <span class="math notranslate nohighlight">\(R(J)\)</span>, and a P-branch transition originating in state <span class="math notranslate nohighlight">\(J\)</span> and terminating in state <span class="math notranslate nohighlight">\((J − 1)\)</span> is written as <span class="math notranslate nohighlight">\(P(J)\)</span>. Transitions in the Q branch would correspond to a pure vibrational (∆v = 1, ∆J = 0) transition with a frequency <span class="math notranslate nohighlight">\(\nu_e\)</span>. Such a transition can be observed in the spectra of more-complex molecules, but it is forbidden to occur (by the previously discussed selection rules) in the rotational-vibrational spectra of simple diatomics, so we will not discuss it further here.</p>
 </section>
-<section id="ir-spectrum-structure">
-<h3>2.2 IR spectrum structure<a class="headerlink" href="#ir-spectrum-structure" title="Permalink to this heading">#</a></h3>
-<p>A recorded IR spectrum for a HCl molecule is plotted in Fig. 4. It has the expected structure: there are two series of lines, P and R branches, with a gap between them. This gap, which is a Q branch, would correspond to a pure vibrational (∆v = 1, ∆J = 0) transition with a frequency <span class="math notranslate nohighlight">\(\nu_e\)</span>—if it were not forbidden. We observe also that distance between peaks is not quite constant as one would expect from Eq. (1)! For example, for the R branch</p>
+<section id="structure-of-the-ir-spectrum">
+<h3>2.2 Structure of the IR spectrum<a class="headerlink" href="#structure-of-the-ir-spectrum" title="Permalink to this heading">#</a></h3>
+<p>An experimental infrared IR spectrum for an HCl molecule is plotted in Fig. 4. It has the expected structure: there are two series of features, the P and R branches, with a gap between them (the missing Q branch). However, we observe that distance between peaks <em>is not quite constant</em>, as the form of Eq. (1) predicted! For example, we could use Eq. (1) to work out the expected photon energies corresponding to transitions for the R branch:</p>
 <div class="math notranslate nohighlight">
 \[
-R(J) = E_{rv}(1, J + 1) − E_{rv}(0, J) = h \nu_e + 2hB_e(J + 1), \tag{5}
+R(J) = E_{rv}(1, J + 1) − E_{rv}(0, J) = h \nu_e + 2hB_e(J + 1) \tag{5}
 \]</div>
-<p>and the distance between neighboring peaks <span class="math notranslate nohighlight">\(R(J + 1) − R(J) = 2hB_e\)</span> should be a constant. The reason for this variable spacing is the following: Typically, a molecular vibration takes on the order of <span class="math notranslate nohighlight">\(10^{-14}\)</span> s. A molecular rotation is normally much slower, taking <span class="math notranslate nohighlight">\(10^{−9}\)</span> s to <span class="math notranslate nohighlight">\(10^{−10}\)</span> s. Hence, as a molecule rotates one revolution, it vibrates many times. To account for this, we have to replace <span class="math notranslate nohighlight">\(R_e\)</span> in the deﬁnition of the rotational constant, Eq. (2), with a vibrationally averaged <span class="math notranslate nohighlight">\(R\)</span>. In the simplest approximation, this leads to the v-dependence of the rotational constant,</p>
+<p>Then, we could consider the distance (in energy) between neighbouring peaks in the spectrum: <span class="math notranslate nohighlight">\(R(J + 1) − R(J) = 2hB_e\)</span>. If Eq. (1) were the whole story, the spacing should be a constant!</p>
+<p>Thought many possibilities could be considered, it turns out that the dominant reason for this variable spacing is the following: Typically, a molecular vibration is fast—taking place on the order of <span class="math notranslate nohighlight">\(10^{-14} \)</span> s (10 fs!). By comparison, a molecular rotation is usually much slower, taking <span class="math notranslate nohighlight">\(10^{−9}\)</span> s to <span class="math notranslate nohighlight">\(10^{−10}\)</span> s (100 ps - 1 ns). Hence, while a rotating molecule makes one revolution, its atoms undergo many cycles of vibration. This means that the instantaneous bond length will sometimes be longer (and sometimes be shorter) than it is at equilibrium. Because the moment of inertia varies non-linearly with <span class="math notranslate nohighlight">\(d\)</span>, this motion has an asymmetric net effect. To account for this, we can replace the <span class="math notranslate nohighlight">\(d_e\)</span> in the deﬁnition of the rotational constant, Eq. (2), with a vibrationally averaged <span class="math notranslate nohighlight">\(d\)</span>. In the simplest approximation, this leads to a depednence of the rotational constant on <span class="math notranslate nohighlight">\(v\)</span>, <em>i.e.</em> the vibrational quantum number. As a result, we end up with a more complicated expression for the (vibrationally-corrected) rotational constant:</p>
 <div class="math notranslate nohighlight">
 \[
 B_v = B_e − \alpha_e
@@ -513,43 +509,48 @@ v + \frac{1}{2}
 \right)
 \tag{6}
 \]</div>
-<p>For example, <span class="math notranslate nohighlight">\(B_0\)</span> is the rotational constant for <span class="math notranslate nohighlight">\(v = 0\)</span> and <span class="math notranslate nohighlight">\(B_1\)</span> is the rotational constant when <span class="math notranslate nohighlight">\(v=1\)</span>. The rotational-vibrational energy (1) has to be modiﬁed accordingly,</p>
+<p>Where we have introduced <span class="math notranslate nohighlight">\(\alpha_e\)</span> as a new, empirical constant that captures the strength of this effect for a particular molecule. As a result, the value of the rotational constant now explicitly depends on <span class="math notranslate nohighlight">\(v\)</span>. For example, <span class="math notranslate nohighlight">\(B_0\)</span> is the rotational constant for <span class="math notranslate nohighlight">\(v = 0\)</span> and <span class="math notranslate nohighlight">\(B_1\)</span> is the rotational constant when <span class="math notranslate nohighlight">\(v=1\)</span>. With this correction, our expression for the rotational-vibrational energy (1) needs to be modiﬁed accordingly,</p>
 <div class="math notranslate nohighlight">
 \[
-E_{rv}(v, J) = hB_v J(J + 1) + h\nu_e
+E_{rv}(v, J) = B_v J(J + 1) + h\nu_e
 \left(
 v + \frac{1}{2}
 \right)
 \tag{7}
 \]</div>
-<p>This equation provides the basis for analyzing the vibration-rotation spectrum of HCl.</p>
+<p><em><strong>This equation provides the basis for analyzing the vibration-rotation spectrum of HCl.</strong></em></p>
 </section>
 </section>
-<section id="spectrum-analysis">
-<h2>3 Spectrum Analysis<a class="headerlink" href="#spectrum-analysis" title="Permalink to this heading">#</a></h2>
-<p>Using Eq. (7), we can derive an expression for frequencies in the R and P branches</p>
+<section id="practical-spectrum-analysis">
+<h2>3 Practical Spectrum Analysis<a class="headerlink" href="#practical-spectrum-analysis" title="Permalink to this heading">#</a></h2>
+<p>Using our new Eq. (7), we can derive expressions for locations of peaks in the R and P branches (where <span class="math notranslate nohighlight">\(\Delta J = +1\)</span> for the former, <span class="math notranslate nohighlight">\(\Delta J = -1\)</span> for the latter, and where <span class="math notranslate nohighlight">\(v_{initial}=0\)</span>, <span class="math notranslate nohighlight">\(v_{final}=1\)</span> always, as discussed previously.):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-R(J) &amp;= E_{rv}(1, J + 1) − E_{rv}(0, J) = h\nu_e + 2hB_e(J + 1) − hα_e(J + 1)(J + 3),
+R(J) &amp;= E_{rv}(1, J + 1) − E_{rv}(0, J) = h\nu_e + 2B_e(J + 1) − α_e(J + 1)(J + 3)
 \tag{8} \\
-P (J) &amp;= E_{rv}(1, J − 1) − E_{rv}(0, J) = h\nu_e − 2hB_eJ − hα_eJ(J − 2).
+P (J) &amp;= E_{rv}(1, J − 1) − E_{rv}(0, J) = h\nu_e − 2B_eJ − α_eJ(J − 2)
 \tag{9}
 \end{align}
 \end{split}\]</div>
-<p>Equations (8) and (9) can be simpliﬁed further to assist you in determining <span class="math notranslate nohighlight">\(\nu_e\)</span>, <span class="math notranslate nohighlight">\(B_e\)</span>, and <span class="math notranslate nohighlight">\(\alpha_e\)</span> from your assigned spectral frequencies. Substituting <span class="math notranslate nohighlight">\(n = J + 1\)</span> in Eq. (8), and <span class="math notranslate nohighlight">\(n = −J\)</span> in Eq. (9), we combine them together in a single equation</p>
+<p>Equations (8) and (9) can be simpliﬁed further to assist you in determining <span class="math notranslate nohighlight">\(\nu_e\)</span>, <span class="math notranslate nohighlight">\(B_e\)</span>, and <span class="math notranslate nohighlight">\(\alpha_e\)</span> directly from the peaks in your experimental spectrum. Specifically, we can introduce a new variable,<span class="math notranslate nohighlight">\(n\)</span> to keep track of sequential features in both branches of the spectrum. We can accomplish this by making the substitution <span class="math notranslate nohighlight">\(n = J_i + 1\)</span> in Eq. (8), and <span class="math notranslate nohighlight">\(n = -J_i\)</span> in Eq. (9), where use <span class="math notranslate nohighlight">\(J_i\)</span> to emphasize that this refers to the rotational state of the molecule before absorption of a photon. This allows us to combine these two expressions together into a single equation for the photon energies at which transitions are expected:</p>
 <div class="math notranslate nohighlight">
 \[
-\nu_{R,P}(n) = \nu_e + 2 (B_e − α_e) n − α_e n^2. \tag{10}
+h\nu_{R,P}(n) = h\nu_e + 2 (B_e − α_e) n − α_e n^2. \tag{10}
 \]</div>
 <p>We can now plot the results for both branches of the spectrum on the same graph. Fitting data to a non-linear regression (of a particular functional form you might recognize) by Eq. (10) will yield us several quantities that allow us to calculate our desired physical characteristics of the molecule and allowed transitions.</p>
-<p>Alternatively, we can take the diﬀerence between pairs, rather than the spectral frequencies themselves, to simplify your data plot,</p>
+<p>As a note about units, if our experimental data are plotted versus <em>wavenumbers</em> (i.e. <span class="math notranslate nohighlight">\(\tilde{u}_{R,P}(n)\)</span>, as is common, it is important to recognize that these values have a linear relation to photon energies given in the expression above. As a result, we can generate the equivalent expression for the key characteristic parameters, <span class="math notranslate nohighlight">\(\tilde{\nu}_e\)</span> , <span class="math notranslate nohighlight">\(\tilde{B}_e\)</span>, and <span class="math notranslate nohighlight">\(\alpha_e\)</span> expressed in wavenumbers directly. We thus obtain</p>
 <div class="math notranslate nohighlight">
 \[
-∆\nu_{R,P}(n) = ν_{R,P}(n + 1) − ν_{R,P}(n) = (2B_e − 3α_e) − 2α_en.
+\tilde{\nu}_{R,P}(n) = \tilde{\nu}_e + 2 (\tilde{B}_e − \tilde{α}_e) n − \tilde{α}_e n^2. \tag{10}
+\]</div>
+<p>For completeness, we emphasize that:</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu}_e = \frac{1}{2\pi c_0}\sqrt{\frac{k_e}{\mu}} \quad , \quad \tilde{B_e} \equiv \frac{h}{8\pi^2 c_0 \mu (d_e)^2} 
 \tag{11}
 \]</div>
-<p>Fitting data by Eq. (11) with a linear regression will give us <span class="math notranslate nohighlight">\(−2\alpha_e\)</span> as a slope and <span class="math notranslate nohighlight">\((2B_e − 3\alpha_e)\)</span> from the intercept.</p>
+<p>Note that <span class="math notranslate nohighlight">\(c_0=3\times10^{10}\)</span> cm/s must be employed if these expressions are used as-is for dimensional consistancy.</p>
 </section>
 </section>
 
@@ -611,10 +612,10 @@ P (J) &amp;= E_{rv}(1, J − 1) − E_{rv}(0, J) = h\nu_e − 2hB_eJ − hα_eJ(
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1 Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-vibrations-and-rotation-of-a-diatomic-molecule">2 Theory: Vibrations and rotation of a diatomic molecule</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">2.1 Selection rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-spectrum-structure">2.2 IR spectrum structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-of-the-ir-spectrum">2.2 Structure of the IR spectrum</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-analysis">3 Spectrum Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-spectrum-analysis">3 Practical Spectrum Analysis</a></li>
 </ul>
   </nav></div>
 
